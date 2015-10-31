@@ -23,6 +23,7 @@ namespace Gold.Classes
         public Funcionario()
         {
             //ininia o atributo cargo
+            Ativado = true;
             Cargo = new Cargo();
         }
     }

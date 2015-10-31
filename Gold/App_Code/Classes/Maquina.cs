@@ -16,5 +16,6 @@ public class Maquina
         //
         // TODO: Add constructor logic here
         //
+        Ativado = true;
     }
 }

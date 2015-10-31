@@ -16,8 +16,8 @@ public partial class Pages_Funcionario_Listar : System.Web.UI.Page
 
         DataSet ds = funBD.SelectAll();
 
-        gdvListaFuncionarios.DataSource = ds.Tables[0].DefaultView;
-        gdvListaFuncionarios.DataBind();
+        gvFuncionario.DataSource = ds.Tables[0].DefaultView;
+        gvFuncionario.DataBind();
     }
 
     protected void Page_Load(object sender, EventArgs e)

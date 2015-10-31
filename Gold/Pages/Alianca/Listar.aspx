@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Listar.aspx.cs" Inherits="Pages_Funcionario_Listar" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Listar.aspx.cs" Inherits="Pages_Alianca_Listar" %>
 
 <!DOCTYPE html>
 
@@ -9,19 +9,22 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    <asp:Label ID="Label1" runat="server" Text="Funcionários Cadastrados"></asp:Label>
+    <asp:Label ID="Label1" runat="server" Text="Aliancas"></asp:Label>
         <br />
         <br />
-        <asp:GridView ID="gvFuncionario" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="30px" Width="334px">
+        <asp:GridView ID="gvAlianca" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="30px" Width="334px">
             <Columns>
-                <asp:BoundField DataField="FUN_NOME" HeaderStyle-ForeColor="WhiteSmoke" HeaderText="Nome" DataFormatString="{0:C}" >
+                <asp:BoundField DataField="ALI_PRODUTO" HeaderText="PRODUTO" />
+                <asp:BoundField DataField="MOD_NOME" HeaderStyle-ForeColor="WhiteSmoke" HeaderText="NOME" DataFormatString="{0:C}" >
 <HeaderStyle ForeColor="WhiteSmoke"></HeaderStyle>
                 </asp:BoundField>
-                <asp:BoundField DataField="FUN_CPF" HeaderStyle-ForeColor="WhiteSmoke" HeaderText="CPF" >
+                <asp:BoundField DataField="MOD_PESO" HeaderStyle-ForeColor="WhiteSmoke" HeaderText="PESO" >
 <HeaderStyle ForeColor="WhiteSmoke"></HeaderStyle>
                 </asp:BoundField>
-                <asp:BoundField DataField="CAR_NOME" HeaderText="CARGO" />
-                <asp:CheckBoxField DataField="CAR_ATIVADO" HeaderText="ATIVO" />
+                <asp:BoundField DataField="MOD_FERRAMENTA" HeaderText="FERRAMENTA" />
+                <asp:BoundField DataField="MOD_DESCRICAO" HeaderText="DESCRICAO" />
+                <asp:BoundField DataField="MOD_LARGURA" HeaderText="LARGURA" />
+                <asp:BoundField DataField="MOD_ALTURA" HeaderText="ALTURA" />
             </Columns>
             <FooterStyle BackColor="White" ForeColor="#000066" />
             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
@@ -33,7 +36,6 @@
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#00547E" />
         </asp:GridView>
-    
     </div>
     </form>
 </body>

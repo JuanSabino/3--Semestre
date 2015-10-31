@@ -19,6 +19,7 @@ namespace Gold.Classes
             //
             // TODO: Add constructor logic here
             //
+            Ativado = true;
         }
     }
 }

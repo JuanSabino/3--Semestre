@@ -7,24 +7,20 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Pages_Maquina_Listar : System.Web.UI.Page
+public partial class Pages_Modelo_Listar : System.Web.UI.Page
 {
+
     //METODO PARA CARREGAR A TABELA 
     private void CarregaGrid()
     {
-        MaquinaBD bd = new MaquinaBD();
+        ModeloBD bd = new ModeloBD();
         DataSet ds = bd.SelectAll();
-        gvMaquina.DataSource = ds.Tables[0].DefaultView;
-        gvMaquina.DataBind();
+        gvModelo.DataSource = ds.Tables[0].DefaultView;
+        gvModelo.DataBind();
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //se nao houver a sessao com o codigo do funcionario, redireciona para a pagina de login
-        if (Session["FUN_ID"] == null)
-        {
-            Response.Redirect("../Login.aspx");
-        }
         CarregaGrid();
     }
 }
