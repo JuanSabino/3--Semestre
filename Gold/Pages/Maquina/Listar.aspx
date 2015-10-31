@@ -13,8 +13,8 @@
         <br />
         <asp:GridView ID="gvMaquinas" runat="server" AutoGenerateColumns="False">
             <Columns>
-                <asp:BoundField DataField="MAQ_NOME" HeaderText="Maquina" />
-                <asp:CheckBoxField DataField="MAQ_ATIVADO" HeaderText="Ativado?" />
+                <asp:BoundField DataField="MAQ_NOME" HeaderText="MAQUINA" />
+                <asp:CheckBoxField DataField="MAQ_ATIVADO" HeaderText="ATIVADO?" />
             </Columns>
         </asp:GridView>
         

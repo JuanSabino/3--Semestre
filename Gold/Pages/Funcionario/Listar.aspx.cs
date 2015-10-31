@@ -7,15 +7,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Pages_Maquina_Listar : System.Web.UI.Page
+public partial class Pages_Funcionario_Listar : System.Web.UI.Page
 {
     //METODO PARA CARREGAR A TABELA 
     private void CarregaGrid()
     {
-        MaquinaBD bd = new MaquinaBD();
-        DataSet ds = bd.SelectAll();
-        gvMaquinas.DataSource = ds.Tables[0].DefaultView;
-        gvMaquinas.DataBind();
+        FuncionarioBD funBD = new FuncionarioBD();
+
+        DataSet ds = funBD.SelectAll();
+
+        gdvListaFuncionarios.DataSource = ds.Tables[0].DefaultView;
+        gdvListaFuncionarios.DataBind();
     }
 
     protected void Page_Load(object sender, EventArgs e)

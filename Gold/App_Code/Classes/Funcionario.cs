@@ -16,13 +16,14 @@ namespace Gold.Classes
         public int CPF { get; set; }
         public string Senha { get; set; }
         public Boolean Ativado { get; set; }
+        //relacionamento
+        public Cargo Cargo { get; set; }
 
 
         public Funcionario()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+            //ininia o atributo cargo
+            Cargo = new Cargo();
         }
     }
 

@@ -23,7 +23,7 @@ namespace Gold.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO TBL_FUNCIONARIO (FUN_ID, FUN_NOME, FUN_CPF, FUN_SENHA, FUN_ATIVADO) VALUES (?id, ?nome, ?cpf, ?senha, ?ativado)";
+            string sql = "INSERT INTO TBL_FUNCIONARIO (FUN_ID, FUN_NOME, FUN_CPF, FUN_SENHA, FUN_ATIVADO, CAR_ID) VALUES (?id, ?nome, ?cpf, ?senha, ?ativado, ?cargo)";
 
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
@@ -33,6 +33,8 @@ namespace Gold.Persistencia
             objCommand.Parameters.Add(Mapped.Parameter("?cpf", funcionario.CPF));
             objCommand.Parameters.Add(Mapped.Parameter("?senha", funcionario.Senha));
             objCommand.Parameters.Add(Mapped.Parameter("?ativado", funcionario.Ativado));
+            //insere a ID do cargo
+            objCommand.Parameters.Add(Mapped.Parameter("?cargo", funcionario.Cargo.ID));
 
             objCommand.ExecuteNonQuery();
             objConexao.Close();
@@ -57,7 +59,7 @@ namespace Gold.Persistencia
             System.Data.IDataReader objDataReader;
 
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT * FROM TBL_FUNCIONARIO WHERE FUN_ID = ?codigo ", objConexao);
+            objCommand = Mapped.Command("SELECT * FROM TBL_FUNCIONARIO AS FUN INNER JOIN TBL_CARGO AS CAR ON FUN.CAR_ID=CAR.CAR_ID WHERE FUN_ID = ?codigo ", objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?codigo", id));
 
             objDataReader = objCommand.ExecuteReader();
@@ -68,6 +70,9 @@ namespace Gold.Persistencia
                 funcionario.Nome = Convert.ToString(objDataReader["FUN_NOME"]);
                 funcionario.CPF = Convert.ToInt32(objDataReader["FUN_CPF"]);
                 funcionario.Ativado = Convert.ToBoolean(objDataReader["FUN_ATIVADO"]);
+                //puxa os dados do relacionamento
+                funcionario.Cargo.ID = Convert.ToInt32(objDataReader["CAR_ID"]);
+                funcionario.Cargo.Nome = Convert.ToString(objDataReader["CAR_NOME"]);
             }
 
             objDataReader.Close();
@@ -93,7 +98,7 @@ namespace Gold.Persistencia
             System.Data.IDataAdapter objDataAdapter;
 
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT * FROM TBL_FUNCIONARIO", objConexao);
+            objCommand = Mapped.Command("SELECT * FROM TBL_FUNCIONARIO AS FUN INNER JOIN TBL_CARGO AS CAR ON FUN.CAR_ID=CAR.CAR_ID", objConexao);
             objDataAdapter = Mapped.Adapter(objCommand);
             objDataAdapter.Fill(ds);
 
