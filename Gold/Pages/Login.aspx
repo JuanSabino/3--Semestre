@@ -8,6 +8,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <!--Controller de login do winforms
+            Ja possui dois textbox e um botao.
+            Texto do primeiro textbox fica armazenado na propriedade UserName
+            Texto do segundo textbox fica armazenado na propriedade Password
+         -->
         <asp:Login ID="Login1" runat="server" DisplayRememberMe="False" FailureText="Nao foi possivel logar.&lt;br&gt;Tente novamente!" LoginButtonText="Logar" OnAuthenticate="Login1_Authenticate" PasswordLabelText="Senha:" PasswordRequiredErrorMessage="Senha e obrigatoria!" TitleText="" UserNameLabelText="CPF:" UserNameRequiredErrorMessage="CPF e obrigatorio!" ValidateRequestMode="Enabled">
         </asp:Login>
 

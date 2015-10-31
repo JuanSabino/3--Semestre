@@ -14,6 +14,11 @@ namespace Gold.Persistencia
     public class FuncionarioBD
     {
 
+        /// <summary>
+        /// Metodo para inserir um novo funcionario no banco
+        /// </summary>
+        /// <param name="funcionario">Objeto Funcionario que deseja inserir</param>
+        /// <returns>retorna true caso inclua com sucesso. Em caso de falha retorna false.</returns>
         public bool Insert(Funcionario funcionario)
         {
             System.Data.IDbConnection objConexao;
@@ -38,26 +43,31 @@ namespace Gold.Persistencia
         }
 
 
+        /// <summary>
+        /// Metodo que busca no banco o funcionario desejado
+        /// </summary>
+        /// <param name="id">id do funcionario</param>
+        /// <returns>objeto Funcionario ou null caso nao encontre o id informado</returns>
         public Funcionario Select(int id)
         {
-            Funcionario obj = null;
+            Funcionario funcionario = null;
 
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
             System.Data.IDataReader objDataReader;
 
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT * FROM TBL_FUNCIONARIO WHERE FUN_ID = ?codigo", objConexao);
+            objCommand = Mapped.Command("SELECT * FROM TBL_FUNCIONARIO WHERE FUN_ID = ?codigo ", objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?codigo", id));
 
             objDataReader = objCommand.ExecuteReader();
             while (objDataReader.Read())
             {
-                obj = new Funcionario();
-                obj.ID = Convert.ToInt32(objDataReader["FUN_ID"]);
-                obj.Nome = Convert.ToString(objDataReader["FUN_NOME"]);
-                obj.CPF = Convert.ToInt32(objDataReader["FUN_CPF"]);
-                obj.Ativado = Convert.ToBoolean(objDataReader["FUN_ATIVADO"]);
+                funcionario = new Funcionario();
+                funcionario.ID = Convert.ToInt32(objDataReader["FUN_ID"]);
+                funcionario.Nome = Convert.ToString(objDataReader["FUN_NOME"]);
+                funcionario.CPF = Convert.ToInt32(objDataReader["FUN_CPF"]);
+                funcionario.Ativado = Convert.ToBoolean(objDataReader["FUN_ATIVADO"]);
             }
 
             objDataReader.Close();
@@ -67,9 +77,13 @@ namespace Gold.Persistencia
             objConexao.Dispose();
             objDataReader.Dispose();
 
-            return obj;
+            return funcionario;
         }
 
+        /// <summary>
+        /// Metodo que busca no banco todos os funcionarios que estao ativos
+        /// </summary>
+        /// <returns>Dataset com todos os funcionarios</returns>
         public DataSet SelectAll()
         {
             DataSet ds = new DataSet();
@@ -93,6 +107,14 @@ namespace Gold.Persistencia
 
 
 
+        /// <summary>
+        /// Metodo para realizar o login no sistema
+        /// </summary>
+        /// <param name="CPF">CPF do funcionario</param>
+        /// <param name="Senha">Senha do funcionario</param>
+        /// <returns>Id do funcionario logado ou
+        ///          0 caso nao seja encontrado o funcionario ou
+        ///          menor que 0 caso de algum erro </returns>
         public int Logar(string CPF, string Senha)
         {
             int codigo = 0;
