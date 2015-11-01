@@ -21,7 +21,7 @@ namespace Gold.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO TBL_ALIANCA (ALI_ID, ALI_PRODUTO, MOD_ID, TAM_ID, OS_ID, ALI_ATIVADO) VALUES (?id, ?produto, ?modelo, ?tamanho, ?os, ?ativado)";
+            string sql = "INSERT INTO TBL_ALIANCA (ALI_ID, ALI_PRODUTO, MOD_ID, ALI_TAMANHO, OS_ID, ALI_ATIVADO) VALUES (?id, ?produto, ?modelo, ?tamanho, ?os, ?ativado)";
 
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);

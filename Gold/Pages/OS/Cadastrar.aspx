@@ -27,6 +27,7 @@
 &nbsp;<asp:GridView ID="gvAlianca" runat="server" AutoGenerateColumns="False">
             <Columns>
                 <asp:BoundField DataField="ALI_PRODUTO" HeaderText="ALIANCA" />
+                <asp:BoundField DataField="ALI_TAMANHO" HeaderText="TAMANHO" />
                 <asp:BoundField DataField="MOD_NOME" HeaderText="MODELO" />
                 <asp:BoundField DataField="MOD_PESO" HeaderText="PESO" />
                 <asp:BoundField DataField="MOD_LARGURA" HeaderText="LARGURA" />
