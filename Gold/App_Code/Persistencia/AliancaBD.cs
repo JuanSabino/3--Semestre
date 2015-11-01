@@ -28,7 +28,7 @@ namespace Gold.Persistencia
 
             objCommand.Parameters.Add(Mapped.Parameter("?id", alianca.ID));
             objCommand.Parameters.Add(Mapped.Parameter("?produto", alianca.Produto));
-            objCommand.Parameters.Add(Mapped.Parameter("?modelo", (object)alianca.modelo.ID));
+            objCommand.Parameters.Add(Mapped.Parameter("?modelo", alianca.modelo.ID));
             objCommand.Parameters.Add(Mapped.Parameter("?tamanho", alianca.Tamanho));
             objCommand.Parameters.Add(Mapped.Parameter("?os", alianca.OS));
             objCommand.Parameters.Add(Mapped.Parameter("?ativado", alianca.Ativado));
