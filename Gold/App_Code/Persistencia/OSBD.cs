@@ -72,6 +72,87 @@ namespace Gold.Persistencia
             return codigo;
         }
 
+        public bool Update(OS os)
+        {
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            string sql = "UPDATE TBL_OS SET OS_DATAENTRADA = ?entrada, OS_DATASAIDA = ?saida, OS_LOJA = ?loja, OS_OBS = ?obs, OS_ATIVADO = ?ativado  WHERE OS_ID = ?codigo";
+            //abre uma conexao com banco de dados
+            objConexao = Mapped.Connection();
+            //estruturar o comando a ser executado
+            objCommand = Mapped.Command(sql, objConexao);
+            //parametros
+            objCommand.Parameters.Add(Mapped.Parameter("?entrada", os.HoraEntrada));
+            objCommand.Parameters.Add(Mapped.Parameter("?saida", os.HoraSaida));
+            objCommand.Parameters.Add(Mapped.Parameter("?loja", os.Loja));
+            objCommand.Parameters.Add(Mapped.Parameter("?obs", os.Observacao));
+            objCommand.Parameters.Add(Mapped.Parameter("?ativado", os.Ativado));
+            // executa o comando no banco de dados
+            objCommand.ExecuteNonQuery();
+            //fecha a conexao
+            objConexao.Close();
+
+            objCommand.Dispose();
+            objConexao.Dispose();
+
+            return true;
+        }
+
+        public OS Select(int id)
+        {
+            OS os = null;
+
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            System.Data.IDataReader objDataReader;
+
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command("SELECT * FROM TBL_OS WHERE OS_ID = ?codigo", objConexao);
+            objCommand.Parameters.Add(Mapped.Parameter("?codigo", id));
+
+            objDataReader = objCommand.ExecuteReader();
+            while (objDataReader.Read())
+            {
+                os = new OS();
+                os.ID = Convert.ToInt32(objDataReader["OS_ID"]);
+                os.HoraEntrada = Convert.ToDateTime(objDataReader["OS_DATAENTRADA"]);
+                os.HoraSaida = Convert.ToDateTime(objDataReader["OS_DATASAIDA"]);
+                os.Loja = Convert.ToString(objDataReader["OS_LOJA"]);
+                os.Observacao = Convert.ToString(objDataReader["OS_OBS"]);
+            }
+
+            objDataReader.Close();
+            objConexao.Close();
+
+            objCommand.Dispose();
+            objConexao.Dispose();
+            objDataReader.Dispose();
+
+            return os;
+        }
+
+        public DataSet SelectAll()
+        {
+            DataSet ds = new DataSet();
+
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            System.Data.IDataAdapter objDataAdapter;
+
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command("SELECT * FROM TBL_OS", objConexao);
+            objDataAdapter = Mapped.Adapter(objCommand);
+            objDataAdapter.Fill(ds);
+
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+
+            return ds;
+        }
+
+
+
         public OSBD()
         {
             //
