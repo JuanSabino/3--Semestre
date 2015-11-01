@@ -94,7 +94,7 @@ namespace Gold.Persistencia
             }
             else
             {
-                objCommand = Mapped.Command("SELECT * FROM TBL_ALIANCA AS ALI INNER JOIN TBL_MODELO AS MOD ON ALI.MOD_ID=MOD.MOD_ID", objConexao);
+                objCommand = Mapped.Command("SELECT * FROM TBL_ALIANCA AS ALI INNER JOIN TBL_MODELO AS MD ON ALI.MOD_ID=MD.MOD_ID", objConexao);
             }
 
             objDataAdapter = Mapped.Adapter(objCommand);

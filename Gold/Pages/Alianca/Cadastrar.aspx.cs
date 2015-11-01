@@ -26,6 +26,25 @@ public partial class Pages_Alianca_Cadastrar : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
+        
+    }
+
+    protected void btnVoltar_Click(object sender, EventArgs e)
+    {
+        string pagina;
+        if (Session["OS"] != null)
+        {
+            pagina = "../OS/Cadastrar.aspx";
+        }
+        else
+        {
+            pagina = "../Index.aspx";
+        }
+        Response.Redirect(pagina);
+    }
+
+    protected void btnCadastrar_Click(object sender, EventArgs e)
+    {
         Alianca alianca = new Alianca();
 
         alianca.Produto = txtProduto.Text;
@@ -38,10 +57,16 @@ public partial class Pages_Alianca_Cadastrar : System.Web.UI.Page
         else
         {
             alianca.OS = 0;
-        }        
+        }
         alianca.Ativado = true;
 
         AliancaBD bd = new AliancaBD();
         bd.Insert(alianca);
+
+        if (Session["OS"] != null)
+        {
+            Response.Redirect("../OS/Cadastrar.aspx");
+        }
+        lblMensagem.Text = "Alianac cadastrada com sucesso!";
     }
 }

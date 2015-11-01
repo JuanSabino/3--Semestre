@@ -24,7 +24,10 @@
         <asp:TextBox ID="txtTamanho" runat="server"></asp:TextBox>
         <br />
         <br />
-        <asp:Button ID="btnCadastrar" runat="server" OnClick="Button1_Click" Text="Cadastrar" />
+        <asp:Button ID="btnVoltar" runat="server" OnClick="btnVoltar_Click" Text="Voltar" style="height: 29px" />
+        <asp:Button ID="btnCadastrar" runat="server" OnClick="btnCadastrar_Click" Text="Cadastrar" />
+        <br />
+        <asp:Label ID="lblMensagem" runat="server"></asp:Label>
         <br />
     
     </div>
