@@ -16,27 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbl_conta`
+-- Table structure for table `tbl_alianca_conta`
 --
 
-DROP TABLE IF EXISTS `tbl_conta`;
+DROP TABLE IF EXISTS `tbl_alianca_conta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tbl_conta` (
+CREATE TABLE `tbl_alianca_conta` (
+  `ALC_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ALC_ENTRADA` decimal(20,0) NOT NULL,
+  `ALC_OBSENTRADA` varchar(100) NOT NULL,
+  `ALC_SAIDA` decimal(20,0) DEFAULT NULL,
+  `ALC_OBSSAIDA` varchar(100) DEFAULT NULL,
+  `ALC_INICIO` datetime NOT NULL,
+  `ALC_TERMINO` datetime DEFAULT NULL,
+  `ALC_ATIVADO` tinyint(1) NOT NULL DEFAULT '1',
+  `FUN_ID` int(11) NOT NULL,
+  `MAQ_ID` int(11) NOT NULL,
   `CON_ID` int(11) NOT NULL,
-  `CON_NOME` varchar(45) NOT NULL,
-  PRIMARY KEY (`CON_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ALI_ID` int(11) DEFAULT '0',
+  PRIMARY KEY (`ALC_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_conta`
+-- Dumping data for table `tbl_alianca_conta`
 --
 
-LOCK TABLES `tbl_conta` WRITE;
-/*!40000 ALTER TABLE `tbl_conta` DISABLE KEYS */;
-INSERT INTO `tbl_conta` VALUES (1,'Fundição'),(2,'Corte');
-/*!40000 ALTER TABLE `tbl_conta` ENABLE KEYS */;
+LOCK TABLES `tbl_alianca_conta` WRITE;
+/*!40000 ALTER TABLE `tbl_alianca_conta` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_alianca_conta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
