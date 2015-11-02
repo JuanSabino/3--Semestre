@@ -72,7 +72,7 @@ namespace Gold.Persistencia
             return conta;
         }
 
-        public DataSet SelectAll()
+        public DataSet SelectAll(bool ativado = false)
         {
             DataSet ds = new DataSet();
 
@@ -81,7 +81,15 @@ namespace Gold.Persistencia
             System.Data.IDataAdapter objDataAdapter;
 
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT * FROM tbl_conta", objConexao);
+            if (ativado)
+            {
+                objCommand = Mapped.Command("SELECT * FROM tbl_conta WHERE CON_ATIVADO = 1", objConexao);
+            }
+            else
+            {
+                objCommand = Mapped.Command("SELECT * FROM tbl_conta", objConexao);
+            }
+            
             objDataAdapter = Mapped.Adapter(objCommand);
             objDataAdapter.Fill(ds);
 

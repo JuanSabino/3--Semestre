@@ -25,6 +25,7 @@ DROP TABLE IF EXISTS `tbl_conta`;
 CREATE TABLE `tbl_conta` (
   `CON_ID` int(11) NOT NULL,
   `CON_NOME` varchar(45) NOT NULL,
+  `CON_ATIVADO` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`CON_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -35,7 +36,7 @@ CREATE TABLE `tbl_conta` (
 
 LOCK TABLES `tbl_conta` WRITE;
 /*!40000 ALTER TABLE `tbl_conta` DISABLE KEYS */;
-INSERT INTO `tbl_conta` VALUES (1,'Fundição'),(2,'Corte');
+INSERT INTO `tbl_conta` VALUES (1,'Fundição',1),(2,'Corte',1);
 /*!40000 ALTER TABLE `tbl_conta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-01 22:25:40
+-- Dump completed on 2015-11-02 20:20:48

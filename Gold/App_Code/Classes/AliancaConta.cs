@@ -30,6 +30,11 @@ namespace Gold.Classes
             //
             // TODO: Add constructor logic here
             //
+            Ativado = true;
+            funcionario = new Funcionario();
+            maquina = new Maquina();
+            alianca = new Alianca();
+            conta = new Conta();
         }
     }
 }

@@ -89,7 +89,7 @@ namespace Gold.Persistencia
         /// Metodo que busca no banco todos os funcionarios que estao ativos
         /// </summary>
         /// <returns>Dataset com todos os funcionarios</returns>
-        public DataSet SelectAll()
+        public DataSet SelectAll(bool ativos = false)
         {
             DataSet ds = new DataSet();
 
@@ -98,7 +98,15 @@ namespace Gold.Persistencia
             System.Data.IDataAdapter objDataAdapter;
 
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT * FROM TBL_FUNCIONARIO AS FUN INNER JOIN TBL_CARGO AS CAR ON FUN.CAR_ID=CAR.CAR_ID", objConexao);
+            if (ativos)
+            {
+                objCommand = Mapped.Command("SELECT * FROM TBL_FUNCIONARIO AS FUN INNER JOIN TBL_CARGO AS CAR ON FUN.CAR_ID=CAR.CAR_ID WHERE FUN_ATIVADO = 1", objConexao);
+            }
+            else
+            {
+                objCommand = Mapped.Command("SELECT * FROM TBL_FUNCIONARIO AS FUN INNER JOIN TBL_CARGO AS CAR ON FUN.CAR_ID=CAR.CAR_ID", objConexao);
+            }
+            
             objDataAdapter = Mapped.Adapter(objCommand);
             objDataAdapter.Fill(ds);
 

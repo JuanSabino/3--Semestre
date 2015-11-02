@@ -21,7 +21,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Gold", "http://localhost:55
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "C:\Users\ti2\Documents\GitHubVisualStudio\3--Semestre\Gold\"
+		SlnRelativePath = "C:\Users\juan1_dzibz7x\Documents\GitHubVisualStudio\3--Semestre\Gold\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
