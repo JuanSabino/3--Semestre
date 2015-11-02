@@ -16,7 +16,7 @@
         <br />
         <br />
 
-         <asp:GridView ID="gvOS" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="30px" Width="642px" style="margin-right: 101px">
+         <asp:GridView ID="gvOS" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="30px" Width="100%" style="margin-right: 101px" OnRowCommand="gvOS_RowCommand">
 
             <Columns>
                 <asp:BoundField DataField="OS_DATAENTRADA" HeaderText="DATA ENTRADA" />
@@ -24,6 +24,12 @@
                 <asp:BoundField DataField="OS_LOJA" HeaderText="LOJA" />
                 <asp:BoundField DataField="OS_OBS" HeaderText="OBSERVAÇÃO" />
                 <asp:CheckBoxField DataField="OS_ATIVADO" HeaderText="ATIVADO?" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lbFechar" runat="server" CommandName="fechar" CommandArgument='<%# Bind("OS_ID") %>' >FINALIZAR OS</asp:LinkButton>
+                    </ItemTemplate>
+
+                </asp:TemplateField> 
             </Columns>
 
 

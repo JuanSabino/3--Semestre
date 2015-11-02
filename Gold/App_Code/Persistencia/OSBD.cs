@@ -87,6 +87,7 @@ namespace Gold.Persistencia
             objCommand.Parameters.Add(Mapped.Parameter("?loja", os.Loja));
             objCommand.Parameters.Add(Mapped.Parameter("?obs", os.Observacao));
             objCommand.Parameters.Add(Mapped.Parameter("?ativado", os.Ativado));
+            objCommand.Parameters.Add(Mapped.Parameter("?codigo", os.ID));
             // executa o comando no banco de dados
             objCommand.ExecuteNonQuery();
             //fecha a conexao
@@ -116,7 +117,7 @@ namespace Gold.Persistencia
                 os = new OS();
                 os.ID = Convert.ToInt32(objDataReader["OS_ID"]);
                 os.HoraEntrada = Convert.ToDateTime(objDataReader["OS_DATAENTRADA"]);
-                os.HoraSaida = Convert.ToDateTime(objDataReader["OS_DATASAIDA"]);
+                os.HoraSaida = (objDataReader["OS_DATASAIDA"] is DBNull) ? Convert.ToDateTime(null) : Convert.ToDateTime(objDataReader["OS_DATASAIDA"]);
                 os.Loja = Convert.ToString(objDataReader["OS_LOJA"]);
                 os.Observacao = Convert.ToString(objDataReader["OS_OBS"]);
             }

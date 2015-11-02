@@ -23,4 +23,20 @@ public partial class Pages_OS_Listar : System.Web.UI.Page
     {
         CarregaGrid();
     }
+
+    protected void gvOS_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        int index = 0;
+        switch (e.CommandName)
+        {
+            case "fechar":
+                index = Convert.ToInt32(e.CommandArgument);
+                Session["OS"] = index;
+                Response.Redirect("Fechar.aspx");
+                break;
+            default:
+                break;
+        }
+     
+    }
 }
