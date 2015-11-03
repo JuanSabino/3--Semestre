@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Gold", "http://localhost:55493", "{4AE3BEA7-EA43-4D19-AAA0-29FDBAD7D6BC}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -21,7 +21,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Gold", "http://localhost:55
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "C:\Users\juan1_dzibz7x\Documents\GitHubVisualStudio\3--Semestre\Gold\"
+		SlnRelativePath = "Gold\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject

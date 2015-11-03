@@ -28,7 +28,7 @@ CREATE TABLE `tbl_alianca_conta` (
   `ALC_OBSENTRADA` varchar(100) NOT NULL,
   `ALC_SAIDA` decimal(20,0) DEFAULT NULL,
   `ALC_OBSSAIDA` varchar(100) DEFAULT NULL,
-  `ALC_INICIO` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ALC_INICIO` datetime NOT NULL,
   `ALC_TERMINO` datetime DEFAULT NULL,
   `ALC_ATIVADO` tinyint(1) NOT NULL DEFAULT '1',
   `FUN_ID` int(11) NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE `tbl_alianca_conta` (
   `CON_ID` int(11) NOT NULL,
   `ALI_ID` int(11) DEFAULT '0',
   PRIMARY KEY (`ALC_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,6 @@ CREATE TABLE `tbl_alianca_conta` (
 
 LOCK TABLES `tbl_alianca_conta` WRITE;
 /*!40000 ALTER TABLE `tbl_alianca_conta` DISABLE KEYS */;
-INSERT INTO `tbl_alianca_conta` VALUES (1,2,'mlkmlk',0,NULL,'0001-01-01 00:00:00','0001-01-01 00:00:00',1,1,0,1,0);
 /*!40000 ALTER TABLE `tbl_alianca_conta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-02 20:20:48
+-- Dump completed on 2015-11-03 20:25:10
