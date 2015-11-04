@@ -22,4 +22,9 @@ public partial class Pages_Alianca_Listar : System.Web.UI.Page
     {
         CarregaGrid();
     }
+
+    protected void gvAlianca_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }
