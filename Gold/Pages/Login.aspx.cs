@@ -22,12 +22,26 @@ public partial class Pages_Login : System.Web.UI.Page
     }
 
 
-    protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
+   
+
+    protected void btnLogar_Click(object sender, EventArgs e)
     {
+        if ( String.IsNullOrEmpty( txtCpf.Text.Trim() ))
+        {
+            lblMensagem.Text = "Por favor, digite o CPF!";
+            txtCpf.Focus();
+        }
+        if (String.IsNullOrEmpty(txtSenha.Text.Trim()))
+        {
+            lblMensagem.Text = "Por favor, digite a Senha!";
+            txtSenha.Focus();
+        }
+
         //pega o CPF e a senha digitados pelo usuario
-        String cpf = Login1.UserName;
-        string senha = Login1.Password;
-        
+        string cpf = txtCpf.Text;
+        string senha = txtSenha.Text;
+
+
         FuncionarioBD bd = new FuncionarioBD();
         int codigo = bd.Logar(cpf, senha);
         //se funcionario encontrado
@@ -39,12 +53,12 @@ public partial class Pages_Login : System.Web.UI.Page
         //se funcionario nao encontrado
         else if (codigo == 0)
         {
-            Login1.FailureText = "Funcionario nao localizado com esses dados.<br>Favor verificar CPF e senha!";
+            lblMensagem.Text = "Funcionario nao localizado com esses dados.<br>Favor verificar CPF e senha!";
         }
         //se houve algum erro
         else
         {
-            Login1.FailureText = "Erro ao acessar o banco de dados.<br>Por favor, tente novamente mais tarde!";
+            lblMensagem.Text = "Erro ao acessar o banco de dados.<br>Por favor, tente novamente mais tarde!";
         }
     }
 }

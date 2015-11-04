@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Listar.aspx.cs" Inherits="Pages_Maquina_Listar" %>
 
+<%@ Register src="../../Content/Cabecalho.ascx" tagname="Cabecalho" tagprefix="uc1" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,12 +11,20 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Label ID="Label1" runat="server" Text="Lista de maquinas:"></asp:Label>
+        <uc1:Cabecalho ID="Cabecalho1" runat="server" />
+        <br />
+        <br />
+        <asp:Label ID="lblTitulo" runat="server" Text="Lista de maquinas:"></asp:Label>
+        <br />
         <br />
         <asp:GridView ID="gvMaquina" runat="server" AutoGenerateColumns="False">
             <Columns>
-                <asp:BoundField DataField="MAQ_NOME" HeaderText="MAQUINA" />
-                <asp:CheckBoxField DataField="MAQ_ATIVADO" HeaderText="ATIVADO?" />
+                <asp:BoundField DataField="MAQ_NOME" HeaderText="MAQUINA" >
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                </asp:BoundField>
+                <asp:CheckBoxField DataField="MAQ_ATIVADO" HeaderText="ATIVO" >
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                </asp:CheckBoxField>
             </Columns>
             <FooterStyle BackColor="White" ForeColor="#000066" />
             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />

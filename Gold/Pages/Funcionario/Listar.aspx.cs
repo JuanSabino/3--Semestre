@@ -12,9 +12,9 @@ public partial class Pages_Funcionario_Listar : System.Web.UI.Page
     //METODO PARA CARREGAR A TABELA 
     private void CarregaGrid()
     {
-        FuncionarioBD funBD = new FuncionarioBD();
+        FuncionarioBD bd = new FuncionarioBD();
 
-        DataSet ds = funBD.SelectAll();
+        DataSet ds = bd.SelectAll();
 
         gvFuncionario.DataSource = ds.Tables[0].DefaultView;
         gvFuncionario.DataBind();
@@ -22,11 +22,6 @@ public partial class Pages_Funcionario_Listar : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //se nao houver a sessao com o codigo do funcionario, redireciona para a pagina de login
-        if (Session["FUN_ID"] == null)
-        {
-            Response.Redirect("../Login.aspx");
-        }
         CarregaGrid();
     }
 }

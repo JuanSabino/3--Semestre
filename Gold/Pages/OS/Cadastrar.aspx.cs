@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 public partial class Pages_OS_Cadastrar : System.Web.UI.Page
 {
 
-  
+    //método para buscar a Id da próxima OS
     private int ProximaOs()
     {
         OSBD bd = new OSBD();
@@ -49,27 +49,57 @@ public partial class Pages_OS_Cadastrar : System.Web.UI.Page
         CarregaGrid();
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        Session["LOJA"] = txtLoja.Text;
-        Session["OBS"] = txtObs.Text;
-        Response.Redirect("../Alianca/Cadastrar.aspx");
-    }
+   
     
 
     protected void btnSalvar_Click(object sender, EventArgs e)
     {
+        //validação no servidor
+        if ( String.IsNullOrEmpty( txtLoja.Text.Trim() ))
+        {
+            lblMensagem.Text = "Digite uma loja!";
+            return;
+        }
+
         OS os = new OS();
         OSBD bd = new OSBD();
 
         os.Loja = txtLoja.Text;
         os.Observacao = txtObs.Text;
+        os.Ativado = true;
 
-        bd.Insert(os);
-        Session["OS"] = null;
-        Session[""] = null;
-        Session["OS"] = null;
-        Response.Redirect("Cadastrar.aspx");
+        if ( bd.Insert(os) )
+        {
+            Session["LOJA"] = null;
+            Session["OBS"] = null;
+            lblMensagem.Text = "OS Cadastrada com Sucesso!";
+            txtLoja.Text = "";
+            txtObs.Text = "";
+            Session["OS"] = ProximaOs();
+            txtOs.Text = Convert.ToString(Session["OS"]);
+        }
+        else
+        {
+            lblMensagem.Text = "Houve um erro ao cadastrar!";
+        }
+       
 
+    }
+
+    protected void btnAddAlianca_Click(object sender, EventArgs e)
+    {
+        Session["LOJA"] = txtLoja.Text;
+        Session["OBS"] = txtObs.Text;
+        Response.Redirect("../Alianca/Cadastrar.aspx");
+    }
+
+
+
+    protected void btncancelar_Click(object sender, EventArgs e)
+    {
+        Session["OS"] = null;
+        Session["LOJA"] = null;
+        Session["OBS"] = null;
+        Response.Redirect("Listar.aspx");
     }
 }

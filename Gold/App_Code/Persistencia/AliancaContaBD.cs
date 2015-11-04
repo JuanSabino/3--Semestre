@@ -78,7 +78,7 @@ namespace Gold.Persistencia
                 aliancaConta.Saida = Convert.ToInt32(objDataReader["ALC_SAIDA"]);
                 aliancaConta.ObsSaida = Convert.ToString(objDataReader["ALC_OBSSAIDA"]);
                 aliancaConta.Inicio = Convert.ToDateTime(objDataReader["ALC_INICIO"]);
-                aliancaConta.Termino =  Convert.ToDateTime(objDataReader["ALC_TERMINO"]);
+                aliancaConta.Termino = (objDataReader["OS_DATASAIDA"] is DBNull) ? Convert.ToDateTime(null) : Convert.ToDateTime(objDataReader["ALC_TERMINO"]);
                 aliancaConta.Ativado = Convert.ToBoolean(objDataReader["ALC_ATIVADO"]);
                 aliancaConta.funcionario.ID = Convert.ToInt32(objDataReader["FUN_ID"]);
                 aliancaConta.funcionario.Nome = Convert.ToString(objDataReader["FUN_NOME"]);

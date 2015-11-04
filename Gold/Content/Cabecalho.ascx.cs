@@ -9,6 +9,9 @@ public partial class Content_Cabecalho : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["FUN_ID"] == null)
+        {
+            Response.Redirect("~/Pages/Login.aspx");
+        }
     }
 }

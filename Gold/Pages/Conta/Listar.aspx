@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Listar.aspx.cs" Inherits="Pages_Conta_Listar" %>
 
+<%@ Register src="../../Content/Cabecalho.ascx" tagname="Cabecalho" tagprefix="uc1" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,7 +12,11 @@
     <form id="form1" runat="server">
     <div>
 
-        <asp:Label ID="Label2" runat="server" Text="Lista de Contas"></asp:Label>
+        <uc1:Cabecalho ID="Cabecalho1" runat="server" />
+        <br />
+        <br />
+
+        <asp:Label ID="lblTitulo" runat="server" Text="Lista de Contas"></asp:Label>
         <br />
         <br />
 
@@ -19,7 +25,11 @@
             <Columns>
                   <asp:BoundField DataField="CON_NOME" HeaderStyle-ForeColor="WhiteSmoke" HeaderText="CONTA" DataFormatString="{0:C}" >
 <HeaderStyle ForeColor="WhiteSmoke"></HeaderStyle>
+                  <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                 </asp:BoundField>
+                  <asp:CheckBoxField DataField="CON_ATIVADO" HeaderText="ATIVADO">
+                  <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                  </asp:CheckBoxField>
             </Columns>
 
 

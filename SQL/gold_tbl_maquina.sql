@@ -37,7 +37,7 @@ CREATE TABLE `tbl_maquina` (
 
 LOCK TABLES `tbl_maquina` WRITE;
 /*!40000 ALTER TABLE `tbl_maquina` DISABLE KEYS */;
-INSERT INTO `tbl_maquina` VALUES (1,'Teste',0);
+INSERT INTO `tbl_maquina` VALUES (1,'Teste',1);
 /*!40000 ALTER TABLE `tbl_maquina` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-03 20:25:14
+-- Dump completed on 2015-11-04  9:38:14

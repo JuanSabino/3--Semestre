@@ -89,7 +89,7 @@ namespace Gold.Persistencia
             objConexao = Mapped.Connection();
             if (OS != 0)
             {
-                objCommand = Mapped.Command("SELECT * FROM TBL_ALIANCA AS ALI INNER JOIN TBL_MODELO AS MODELO ON ALI.ALI_ID=MODELO.MOD_ID WHERE OS_ID = ?os AND ALI_ATIVADO = 1 AND MOD_ATIVADO = 1", objConexao);
+                objCommand = Mapped.Command("SELECT * FROM TBL_ALIANCA AS ALI INNER JOIN TBL_MODELO AS MODELO ON ALI.MOD_ID=MODELO.MOD_ID WHERE OS_ID = ?os AND ALI_ATIVADO = 1 AND MOD_ATIVADO = 1", objConexao);
                 objCommand.Parameters.Add(Mapped.Parameter("?os", OS));
             }
             else

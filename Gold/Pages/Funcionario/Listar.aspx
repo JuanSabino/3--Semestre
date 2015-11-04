@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Listar.aspx.cs" Inherits="Pages_Funcionario_Listar" %>
 
+<%@ Register src="../../Content/Cabecalho.ascx" tagname="Cabecalho" tagprefix="uc1" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,7 +11,10 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    <asp:Label ID="Label1" runat="server" Text="Funcionários Cadastrados"></asp:Label>
+        <uc1:Cabecalho ID="Cabecalho1" runat="server" />
+        <br />
+        <br />
+    <asp:Label ID="lblTitulo" runat="server" Text="Funcionários Cadastrados"></asp:Label>
         <br />
         <br />
         <asp:GridView ID="gvFuncionario" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="30px" Width="334px">

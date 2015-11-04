@@ -31,7 +31,7 @@ CREATE TABLE `tbl_os` (
   `OS_OBS` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`OS_ID`),
   UNIQUE KEY `OS_ID_UNIQUE` (`OS_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `tbl_os` (
 
 LOCK TABLES `tbl_os` WRITE;
 /*!40000 ALTER TABLE `tbl_os` DISABLE KEYS */;
-INSERT INTO `tbl_os` VALUES (1,'2015-11-01 17:45:28',NULL,0,'mlkmk','nknk'),(2,'2015-11-01 17:50:54',NULL,0,'','');
+INSERT INTO `tbl_os` VALUES (1,'2015-11-01 17:45:28',NULL,0,'mlkmk','nknk'),(2,'2015-11-01 17:50:54',NULL,0,'',''),(3,'2015-11-04 09:31:16',NULL,0,'Loja 1','aliança para a amante'),(4,'2015-11-04 09:33:50',NULL,1,'Loja 2','aliança para a amante');
 /*!40000 ALTER TABLE `tbl_os` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-03 20:25:17
+-- Dump completed on 2015-11-04  9:38:14

@@ -20,14 +20,14 @@ public partial class Pages_Alianca_Cadastrar : System.Web.UI.Page
             ds = bd.SelectAll(true);
             ddlModelo.DataSource = ds;
             ddlModelo.DataBind();
-        }
+            ddlModelo.Items.Insert(0, "Selecione um modelo");
+            ddlModelo.SelectedIndex = 0;
+          
+        };
 
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        
-    }
+   
 
     protected void btnVoltar_Click(object sender, EventArgs e)
     {
@@ -45,6 +45,24 @@ public partial class Pages_Alianca_Cadastrar : System.Web.UI.Page
 
     protected void btnCadastrar_Click(object sender, EventArgs e)
     {
+        //validação no servidor
+        if ( String.IsNullOrEmpty( txtProduto.Text.Trim() ))
+        {
+            lblMensagem.Text = "Preencha o nome do produto!";
+            return;
+        }
+        if (String.IsNullOrEmpty(txtTamanho.Text.Trim()))
+        {
+            lblMensagem.Text = "Preencha o tamanho!";
+            return;
+        }
+        if ( ddlModelo.SelectedIndex == 0)
+        {
+            lblMensagem.Text = "Selecione um modelo!";
+            return;
+        }
+
+
         Alianca alianca = new Alianca();
 
         alianca.Produto = txtProduto.Text;
@@ -67,6 +85,6 @@ public partial class Pages_Alianca_Cadastrar : System.Web.UI.Page
         {
             Response.Redirect("../OS/Cadastrar.aspx");
         }
-        lblMensagem.Text = "Alianac cadastrada com sucesso!";
+        lblMensagem.Text = "Aliança cadastrada com sucesso!";
     }
 }

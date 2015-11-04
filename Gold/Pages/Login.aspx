@@ -13,10 +13,22 @@
             Texto do primeiro textbox fica armazenado na propriedade UserName
             Texto do segundo textbox fica armazenado na propriedade Password
          -->
-        <asp:Login ID="Login1" runat="server" DisplayRememberMe="False" FailureText="Nao foi possivel logar.&lt;br&gt;Tente novamente!" LoginButtonText="Logar" OnAuthenticate="Login1_Authenticate" PasswordLabelText="Senha:" PasswordRequiredErrorMessage="Senha e obrigatoria!" TitleText="" UserNameLabelText="CPF:" UserNameRequiredErrorMessage="CPF e obrigatorio!" ValidateRequestMode="Enabled">
-        </asp:Login>
 
     <div>
+    
+        <asp:ValidationSummary ID="vsMensagem" runat="server" />
+        <br />
+        <asp:Label ID="Label1" runat="server" Text="CPF:" Width="50px"></asp:Label>
+        <asp:TextBox ID="txtCpf" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="rfvCpf" runat="server" ControlToValidate="txtCpf" ErrorMessage="CPF obrigatório!" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+        <br />
+        <asp:Label ID="Label2" runat="server" Text="Senha:" Width="50px"></asp:Label>
+        <asp:TextBox ID="txtSenha" runat="server" TextMode="Password"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="rfvSenha" runat="server" ControlToValidate="txtSenha" ErrorMessage="Senha obrigatória!" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+        <br />
+        <asp:Label ID="lblMensagem" runat="server"></asp:Label>
+        <br />
+        <asp:Button ID="btnLogar" runat="server" OnClick="btnLogar_Click" Text="Logar" />
     
     </div>
     </form>

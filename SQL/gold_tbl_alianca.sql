@@ -30,7 +30,7 @@ CREATE TABLE `tbl_alianca` (
   `OS_ID` int(10) unsigned DEFAULT NULL,
   `ALI_ATIVADO` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`ALI_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `tbl_alianca` (
 
 LOCK TABLES `tbl_alianca` WRITE;
 /*!40000 ALTER TABLE `tbl_alianca` DISABLE KEYS */;
-INSERT INTO `tbl_alianca` VALUES (1,'teste',1,1,0,1),(2,'teste',1,10,1,1),(3,'gfdgfgf',1,45,1,1);
+INSERT INTO `tbl_alianca` VALUES (1,'teste',1,1,0,1),(2,'teste',1,10,1,1),(3,'gfdgfgf',1,45,1,1),(4,'Aliança Teste',1,16,3,1),(5,'Aliança Teste',1,18,4,1);
 /*!40000 ALTER TABLE `tbl_alianca` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-03 20:25:09
+-- Dump completed on 2015-11-04  9:38:13
