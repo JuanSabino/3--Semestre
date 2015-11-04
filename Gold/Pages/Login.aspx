@@ -21,7 +21,7 @@
 
     <div class="form-group container">
     
-        <asp:ValidationSummary ID="vsMensagem" runat="server" CssClass="has-error" />
+        <asp:ValidationSummary ID="vsMensagem" runat="server" CssClass="has-error text-warning bg-warning" />
         <br />
         <asp:Label ID="Label1" runat="server" Text="CPF:" Width="50px"></asp:Label>
         <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control"></asp:TextBox>

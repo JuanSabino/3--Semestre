@@ -23,7 +23,7 @@ namespace Gold.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO TBL_ALIANCA_CONTA (ALC_ID, ALC_ENTRADA, ALC_OBSENTRADA, ALC_SAIDA, ALC_OBSSAIDA, ALC_INICIO, ALC_TERMINO, ALC_ATIVADO, FUN_ID, MAQ_ID, CON_ID, ALI_ID) VALUES (?id, ?entrada, ?obsentrada, ?saida, ?obssaida, ?inicio, ?termino, ?ativado, ?funcionario, ?maquina, ?conta, ?alianca)";
+            string sql = "INSERT INTO TBL_ALIANCA_CONTA (ALC_ID, ALC_ENTRADA, ALC_OBSENTRADA, ALC_SAIDA, ALC_OBSSAIDA,  ALC_ATIVADO, FUN_ID, MAQ_ID, CON_ID, ALI_ID) VALUES (?id, ?entrada, ?obsentrada, ?saida, ?obssaida,  ?ativado, ?funcionario, ?maquina, ?conta, ?alianca)";
 
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
@@ -34,8 +34,8 @@ namespace Gold.Persistencia
             objCommand.Parameters.Add(Mapped.Parameter("?obsentrada", aliancaConta.ObsEntrada));
             objCommand.Parameters.Add(Mapped.Parameter("?saida", aliancaConta.Saida));
             objCommand.Parameters.Add(Mapped.Parameter("?obssaida", aliancaConta.ObsSaida));
-            objCommand.Parameters.Add(Mapped.Parameter("?inicio", aliancaConta.Inicio));
-            objCommand.Parameters.Add(Mapped.Parameter("?termino", aliancaConta.Termino));
+            //objCommand.Parameters.Add(Mapped.Parameter("?inicio", aliancaConta.Inicio));
+            //objCommand.Parameters.Add(Mapped.Parameter("?termino", aliancaConta.Termino));
             objCommand.Parameters.Add(Mapped.Parameter("?ativado", aliancaConta.Ativado));
             objCommand.Parameters.Add(Mapped.Parameter("?funcionario", aliancaConta.funcionario.ID));
             objCommand.Parameters.Add(Mapped.Parameter("?maquina", aliancaConta.maquina.ID));
@@ -78,7 +78,7 @@ namespace Gold.Persistencia
                 aliancaConta.Saida = Convert.ToInt32(objDataReader["ALC_SAIDA"]);
                 aliancaConta.ObsSaida = Convert.ToString(objDataReader["ALC_OBSSAIDA"]);
                 aliancaConta.Inicio = Convert.ToDateTime(objDataReader["ALC_INICIO"]);
-                aliancaConta.Termino = (objDataReader["OS_DATASAIDA"] is DBNull) ? Convert.ToDateTime(null) : Convert.ToDateTime(objDataReader["ALC_TERMINO"]);
+                aliancaConta.Termino = (objDataReader["ALC_TERMINO"] is DBNull) ? Convert.ToDateTime(null) : Convert.ToDateTime(objDataReader["ALC_TERMINO"]);
                 aliancaConta.Ativado = Convert.ToBoolean(objDataReader["ALC_ATIVADO"]);
                 aliancaConta.funcionario.ID = Convert.ToInt32(objDataReader["FUN_ID"]);
                 aliancaConta.funcionario.Nome = Convert.ToString(objDataReader["FUN_NOME"]);

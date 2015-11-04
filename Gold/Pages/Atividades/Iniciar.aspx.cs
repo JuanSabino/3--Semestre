@@ -27,6 +27,8 @@ public partial class Pages_Atividades_Iniciar : System.Web.UI.Page
         DataSet ds = bd.SelectAll(true);
         ddlFuncionario.DataSource = ds.Tables[0].DefaultView;
         ddlFuncionario.DataBind();
+        ddlFuncionario.Items.Insert(0, "Selecione um funcionário");
+        ddlFuncionario.SelectedIndex = 0;
     }
 
     private void CarregaDropDownConta()
@@ -35,6 +37,8 @@ public partial class Pages_Atividades_Iniciar : System.Web.UI.Page
         DataSet ds = bd.SelectAll(true);
         ddlConta.DataSource = ds.Tables[0].DefaultView;
         ddlConta.DataBind();
+        ddlConta.Items.Insert(0, "Selecione uma conta");
+        ddlConta.SelectedIndex = 0;
     }
 
     private void CarregaDropDownMaquina()
@@ -43,6 +47,8 @@ public partial class Pages_Atividades_Iniciar : System.Web.UI.Page
         DataSet ds = bd.SelectAll(true);
         ddlMaquina.DataSource = ds.Tables[0].DefaultView;
         ddlMaquina.DataBind();
+        ddlMaquina.Items.Insert(0, "Selecione uma máquina");
+        ddlMaquina.SelectedIndex = 0;
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -53,6 +59,11 @@ public partial class Pages_Atividades_Iniciar : System.Web.UI.Page
             CarregaDropDownFuncionario();
             CarregaDropDownConta();
             CarregaDropDownMaquina();
+            if ( Convert.ToInt32( Session["OK"] ) == 1)
+            {
+                lblMensagem2.Text = "Atividade cadastrada!";
+                Session["OK"] = null;
+            }
         }
             
     }
@@ -93,6 +104,34 @@ public partial class Pages_Atividades_Iniciar : System.Web.UI.Page
 
     protected void btnSalvar_Click(object sender, EventArgs e)
     {
+        //validação no servidor
+        if ( String.IsNullOrEmpty( txtEntrada.Text.Trim() ))
+        {
+            lblMensagem2.Text = "Preencha o valor de entrada em gramas!";
+            return;
+        }
+        if ( ( rblAlianca.SelectedValue == "1" ) && ( Convert.ToInt32(Session["ALIANCA"]) == 0  || Session["ALIANCA"] == null ) )
+        {
+            lblMensagem2.Text = "Selecione uma aliança!";
+            return;
+        }
+        if ( ddlFuncionario.SelectedIndex == 0)
+        {
+            lblMensagem2.Text = "Selecione um funcionário!";
+            return;
+        }
+        if (ddlConta.SelectedIndex == 0)
+        {
+            lblMensagem2.Text = "Selecione uma conta!";
+            return;
+        }
+        if (ddlMaquina.SelectedIndex == 0)
+        {
+            lblMensagem2.Text = "Selecione uma máquina!";
+            return;
+        }
+
+
         int alianca = Convert.ToInt32(Session["ALIANCA"]);
             
 
@@ -103,13 +142,12 @@ public partial class Pages_Atividades_Iniciar : System.Web.UI.Page
         aliancaConta.funcionario.ID = Convert.ToInt32(ddlFuncionario.SelectedValue);
         aliancaConta.conta.ID = Convert.ToInt32(ddlConta.SelectedValue);
         aliancaConta.maquina.ID = Convert.ToInt32(ddlMaquina.SelectedValue);
-        aliancaConta.Inicio = DateTime.Now;
-        aliancaConta.Termino = null ;
 
         AliancaContaBD bd = new AliancaContaBD();
         if (bd.Insert(aliancaConta))
         {
-            lblMensagem2.Text = "Atividade cadastrada!";
+            Session["OK"] = 1;
+            Response.Redirect("Iniciar.aspx");
         }
         else
         {
@@ -118,5 +156,10 @@ public partial class Pages_Atividades_Iniciar : System.Web.UI.Page
 
 
 
+    }
+
+    protected void btnVoltar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Listar.aspx");
     }
 }

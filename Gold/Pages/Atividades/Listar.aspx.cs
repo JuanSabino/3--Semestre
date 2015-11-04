@@ -39,4 +39,9 @@ public partial class Pages_Atividades_Listar : System.Web.UI.Page
             }
 
     }
+
+    protected void btnAbrir_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Iniciar.aspx");
+    }
 }

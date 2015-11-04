@@ -22,8 +22,15 @@ public partial class Pages_Atividades_Fechar : System.Web.UI.Page
 
             //Additional information: Referência de objeto não definida para uma instância de um objeto.
 
-            lblId.Text = Convert.ToString(aliancaConta.ID);
-            lblFuncionario.Text = Convert.ToString(aliancaConta.funcionario.Nome);
+            txtID.Text = Convert.ToString(aliancaConta.ID);
+            txtOS.Text = Convert.ToString(aliancaConta.alianca.OS);
+            txtAlianca.Text = Convert.ToString(aliancaConta.alianca.ID);
+            txtEntrada.Text = Convert.ToString(aliancaConta.Entrada);
+            txtObsEntrada.Text = Convert.ToString(aliancaConta.ObsEntrada);
+            txtInicio.Text = Convert.ToString(aliancaConta.Inicio);
+            txtFuncionario.Text = Convert.ToString(aliancaConta.funcionario.Nome);
+            txtMaquina.Text = Convert.ToString(aliancaConta.maquina.Nome);
+            txtConta.Text = Convert.ToString(aliancaConta.conta.Nome);
         }
     }
 
@@ -41,7 +48,7 @@ public partial class Pages_Atividades_Fechar : System.Web.UI.Page
         alianca = bd.Select(codigo);
         alianca.Termino = DateTime.Now;
         alianca.Saida = Convert.ToDouble(txtSaida.Text);
-        alianca.ObsSaida = txtObs.Text;
+        alianca.ObsSaida = txtObsSaida.Text;
         bd.Update(alianca);
 
         Session["AliancaConta"] = null;
