@@ -17,7 +17,7 @@ namespace Gold.Classes
         public double Saida { get; set; }
         public string ObsSaida { get; set; }
         public DateTime Inicio { get; set; }
-        public DateTime Termino { get; set; }
+        public Nullable<DateTime> Termino { get; set; }
         public Funcionario funcionario { get; set; }
         public Maquina maquina { get; set; }
         public Alianca alianca { get; set; }

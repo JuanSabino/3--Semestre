@@ -56,6 +56,11 @@
         <asp:DropDownList ID="ddlConta" runat="server" DataTextField="CON_NOME" DataValueField="CON_ID">
         </asp:DropDownList>
         <br />
+        <asp:Label ID="Label6" runat="server" Text="Maquina:"></asp:Label>
+        <br />
+        <asp:DropDownList ID="ddlMaquina" runat="server" DataTextField="MAQ_NOME" DataValueField="MAQ_ID">
+        </asp:DropDownList>
+        <br />
     
         <br />
         <asp:Button ID="btnSalvar" runat="server" OnClick="btnSalvar_Click" Text="Button" />

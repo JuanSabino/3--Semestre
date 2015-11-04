@@ -37,6 +37,14 @@ public partial class Pages_Atividades_Iniciar : System.Web.UI.Page
         ddlConta.DataBind();
     }
 
+    private void CarregaDropDownMaquina()
+    {
+        MaquinaBD bd = new MaquinaBD();
+        DataSet ds = bd.SelectAll(true);
+        ddlMaquina.DataSource = ds.Tables[0].DefaultView;
+        ddlMaquina.DataBind();
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
@@ -44,6 +52,7 @@ public partial class Pages_Atividades_Iniciar : System.Web.UI.Page
             CarregaGrid();
             CarregaDropDownFuncionario();
             CarregaDropDownConta();
+            CarregaDropDownMaquina();
         }
             
     }
@@ -85,6 +94,7 @@ public partial class Pages_Atividades_Iniciar : System.Web.UI.Page
     protected void btnSalvar_Click(object sender, EventArgs e)
     {
         int alianca = Convert.ToInt32(Session["ALIANCA"]);
+            
 
         AliancaConta aliancaConta = new AliancaConta();
         aliancaConta.Entrada = Convert.ToDouble(txtEntrada.Text);
@@ -92,6 +102,9 @@ public partial class Pages_Atividades_Iniciar : System.Web.UI.Page
         aliancaConta.alianca.ID = alianca;
         aliancaConta.funcionario.ID = Convert.ToInt32(ddlFuncionario.SelectedValue);
         aliancaConta.conta.ID = Convert.ToInt32(ddlConta.SelectedValue);
+        aliancaConta.maquina.ID = Convert.ToInt32(ddlMaquina.SelectedValue);
+        aliancaConta.Inicio = DateTime.Now;
+        aliancaConta.Termino = null ;
 
         AliancaContaBD bd = new AliancaContaBD();
         if (bd.Insert(aliancaConta))

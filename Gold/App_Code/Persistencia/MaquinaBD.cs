@@ -16,7 +16,7 @@ namespace Gold.Persistencia
         /// Metodo que busca no banco todos as maquinas que estao ativas
         /// </summary>
         /// <returns>Dataset com todas as maquinas</returns>
-        public DataSet SelectAll()
+        public DataSet SelectAll(bool ativado = false)
         {
             DataSet ds = new DataSet();
 
@@ -25,7 +25,15 @@ namespace Gold.Persistencia
             System.Data.IDataAdapter objDataAdapter;
 
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT * FROM TBL_MAQUINA", objConexao);
+            if (ativado)
+            {
+                objCommand = Mapped.Command("SELECT * FROM TBL_MAQUINA WHERE MAQ_ATIVADO = 1", objConexao);
+            }
+            else
+            {
+                objCommand = Mapped.Command("SELECT * FROM TBL_MAQUINA", objConexao);
+            }
+                
             objDataAdapter = Mapped.Adapter(objCommand);
             objDataAdapter.Fill(ds);
 
