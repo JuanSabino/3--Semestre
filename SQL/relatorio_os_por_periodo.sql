@@ -1,21 +1,27 @@
-select 
-	os.os_id as OrderServico
-    , os.OS_LOJA as Loja
-    , alianca.ali_id as Alianca
-    , modelo.MOD_Nome as Modelo
-    , alianca.ALI_TAMANHO as Tamanho
-    , modelo.MOD_PESO as Peso
-    , alianca.ALI_DETALHES as Detalhes 
-    , os.OS_DATAENTRADA as DataAbertura
-    , os.OS_DATASAIDA as DataEncerramento
-    
-from 
-	tbl_os as os
-inner join 
-	tbl_alianca as alianca
-on 
+SELECT 
+	os.os_id AS OrderServico
+    , os.OS_LOJA AS Loja
+    , alianca.ali_id AS Alianca
+    , modelo.MOD_Nome AS Modelo
+    , alianca.ALI_TAMANHO AS Tamanho
+    , modelo.MOD_PESO AS Peso
+    , alianca.ALI_DETALHES AS Detalhes 
+    , os.OS_DATAENTRADA AS DataAbertura
+    , ifnull( os.OS_DATASAIDA, now()) AS DataEncerramento
+    , TIMESTAMPDIFF(DAY,os.OS_DATAENTRADA, ifnull( os.OS_DATASAIDA, now()) ) AS DiasAbertos
+FROM
+	tbl_os AS os
+INNER JOIN
+	tbl_alianca AS alianca
+ON 
 	os.os_id=alianca.os_id
-inner join 
-	tbl_modelo as modelo
-on 
+INNER JOIN
+	tbl_modelo AS modelo
+ON 
 	alianca.mod_id=modelo.mod_id
+WHERE
+	alianca.ALI_ATIVADO = 1
+    AND modelo.MOD_ATIVADO = 1
+    AND os.OS_ATIVADO = 1
+    AND os.OS_DATASAIDA IS NOT NULL
+ORDER BY DiasAbertos ASC
