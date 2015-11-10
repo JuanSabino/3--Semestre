@@ -25,6 +25,14 @@ public partial class Pages_Relatorios_OSPorPeriodo_Config : System.Web.UI.Page
             lblMensagem.Text = "Digite a data final!";
             return;
         }
+        DateTime Inicial = Convert.ToDateTime(txtDataInicial.Text);
+        DateTime Final = Convert.ToDateTime(txtDataFinal.Text);
+        //Verifica se a data final é menor que a inicial
+        if ( Inicial.CompareTo( Final ) > 0 )
+        {
+            lblMensagem.Text = "Data final deve ser maior que data inicial!";
+            return;
+        }
         Session["DATA_INICIAL"] = txtDataInicial.Text;
         Session["DATA_FINAL"] = txtDataFinal.Text;
         Response.Redirect("Relatorio.aspx");

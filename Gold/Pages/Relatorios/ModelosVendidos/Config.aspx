@@ -34,6 +34,7 @@
         <br />
         <asp:TextBox ID="txtDataFinal" runat="server" Height="23px" TextMode="Date"></asp:TextBox>
         <asp:RequiredFieldValidator ID="rfvDataFInal" runat="server" ControlToValidate="txtDataFinal" ErrorMessage="Digite a datafinal!" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+        <asp:CompareValidator ID="cvDataFinal" runat="server" ControlToCompare="txtDataInicial" ControlToValidate="txtDataFinal" ErrorMessage="Data final deve ser maior que data inicial!" Operator="GreaterThanEqual" SetFocusOnError="True" Type="Date">*</asp:CompareValidator>
         <br />
         <br />
         <asp:Button ID="btnGerar" runat="server" OnClick="btnGerar_Click" Text="Gerar" />
