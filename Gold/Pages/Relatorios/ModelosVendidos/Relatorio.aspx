@@ -3,6 +3,13 @@
 <%@ Register Src="~/Content/Cabecalho.ascx" TagPrefix="uc1" TagName="Cabecalho" %>
 
 
+
+
+<%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
+
+
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -15,8 +22,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 </head>
 <body>
-    <uc1:Cabecalho runat="server" ID="Cabecalho" />
     <form id="form1" runat="server">
+    <uc1:Cabecalho runat="server" ID="Cabecalho" />
     <div>
     
         <asp:Label ID="Label1" runat="server" Text="&lt;b&gt;Parâmetros:&lt;/b&gt;"></asp:Label>
@@ -27,22 +34,24 @@
         <asp:Label ID="Label3" runat="server" Text="Data Final:" Width="100px"></asp:Label>
         <asp:Label ID="lblFinal" runat="server"></asp:Label>
         <br />
-        <asp:Label ID="Label4" runat="server" Text="Ordenado por:" Width="100px"></asp:Label>
-        <asp:Label ID="lblOrdem" runat="server"></asp:Label>
-        <br />
     <hr />
-        <asp:GridView ID="gvRelatorio" runat="server" AutoGenerateColumns="False" Width="80%">
+
+    <asp:Chart ID="crtRelatorio" runat="server" Width="800px" >
+        <series>
+            <asp:Series Name="Default" ChartType="Pie" Legend="Legend1">
+            </asp:Series>
+        </series>
+        <chartareas>
+            <asp:ChartArea Name="ChartArea1">
+            </asp:ChartArea>
+        </chartareas>
+    <Legends><asp:Legend Name="Legend1" Title="MODELOS"></asp:Legend></Legends></asp:Chart>
+
+
+        <asp:GridView ID="gvRelatorio" runat="server" AutoGenerateColumns="False" Width="80%" OnSelectedIndexChanged="gvRelatorio_SelectedIndexChanged">
             <Columns>
-                <asp:BoundField DataField="OrderServico" HeaderText="Nº OS" />
-                <asp:BoundField DataField="Loja" HeaderText="LOJA" />
-                <asp:BoundField DataField="Alianca" HeaderText="COD ALIANÇA" />
                 <asp:BoundField DataField="Modelo" HeaderText="MODELO" />
-                <asp:BoundField DataField="Tamanho" HeaderText="TAMANHO" />
-                <asp:BoundField DataField="Peso" HeaderText="PESO" />
-                <asp:BoundField DataField="Detalhes" HeaderText="DETALHES" />
-                <asp:BoundField DataField="DataAbertura" HeaderText="DATA ABERTURA" DataFormatString="{0:d}" />
-                <asp:BoundField DataField="DataEncerramento" HeaderText="DATA ENCERRAMENTO" DataFormatString="{0:d}" />
-                <asp:BoundField DataField="DiasAbertos" HeaderText="DIAS EM ABERTO" />
+                <asp:BoundField DataField="Quantidade" HeaderText="QUANTIDADE" />
             </Columns>
         </asp:GridView>
     

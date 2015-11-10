@@ -6,7 +6,7 @@ SELECT
     , alianca.ALI_TAMANHO AS Tamanho
     , modelo.MOD_PESO AS Peso
     , alianca.ALI_DETALHES AS Detalhes 
-    , os.OS_DATAENTRADA AS DataAbertura
+    , cast(os.OS_DATAENTRADA as Date) AS DataAbertura
     , ifnull( os.OS_DATASAIDA, now()) AS DataEncerramento
     , TIMESTAMPDIFF(DAY,os.OS_DATAENTRADA, ifnull( os.OS_DATASAIDA, now()) ) AS DiasAbertos
 FROM
@@ -23,5 +23,5 @@ WHERE
 	alianca.ALI_ATIVADO = 1
     AND modelo.MOD_ATIVADO = 1
     AND os.OS_ATIVADO = 1
-    AND os.OS_DATASAIDA IS NOT NULL
+    and os.OS_DATAENTRADA between '' and ''
 ORDER BY DiasAbertos ASC

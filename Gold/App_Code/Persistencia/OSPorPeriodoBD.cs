@@ -22,15 +22,16 @@ namespace Gold.Persistencia
             System.Data.IDataAdapter objDataAdapter;
 
             string Sql = "select  " +
-                            "os.os_id as OrderServico " + 
+                            "os.os_id as OrderServico " +
                             ", os.OS_LOJA as Loja " +
                             ", alianca.ali_id as Alianca " +
                             ", modelo.MOD_Nome as Modelo " +
                             ", alianca.ALI_TAMANHO as Tamanho " +
                             ", modelo.MOD_PESO as Peso " +
                             ", alianca.ALI_DETALHES as Detalhes " +
-                            ", os.OS_DATAENTRADA as DataAbertura " +
-                            ", os.OS_DATASAIDA as DataEncerramento " +
+                            ", os.OS_DATAENTRADA AS DataAbertura " +
+                            ", os.OS_DATASAIDA AS DataEncerramento " +
+                            ", TIMESTAMPDIFF(DAY,os.OS_DATAENTRADA, ifnull( os.OS_DATASAIDA, now()) ) AS DiasAbertos " +
                         "from " +
                             "tbl_os as os " +
                         "inner join " +
@@ -40,12 +41,12 @@ namespace Gold.Persistencia
                         "inner join " +
                             "tbl_modelo as modelo " +
                         "on " +
-                            "alianca.mod_id = modelo.mod_id " + 
-                        "where "+
-                            "alianca.ativado = 1 " +
-                            "and os.ativado = 1" + 
-                            "and modelo.ativado = 1 " +
-                            "and os.OS_DATASAIDA is not null";
+                            "alianca.mod_id = modelo.mod_id " +
+                        "where " +
+                            "alianca.ali_ativado = 1 " +
+                            "and os.os_ativado = 1 " +
+                            "and modelo.mod_ativado = 1 " +
+                            "and cast(os.OS_DATAENTRADA as Date)  between ?DataInicial and ?DataFinal ";
             if (Classifica == 0) //Maior tempo
             {
                 Sql += " order by ( os.OS_DATASAIDA - os.OS_DATAENTRADA )";
@@ -59,8 +60,8 @@ namespace Gold.Persistencia
 
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(Sql, objConexao);
-            objCommand.Parameters.Add(Mapped.Parameter("?DataInicial", DataInicial));
-            objCommand.Parameters.Add(Mapped.Parameter("?DataFinal", DataFinal));
+            objCommand.Parameters.Add(Mapped.Parameter("?DataInicial", DataInicial.Date));
+            objCommand.Parameters.Add(Mapped.Parameter("?DataFinal", DataFinal.Date));
             objDataAdapter = Mapped.Adapter(objCommand);
             objDataAdapter.Fill(ds);
 
