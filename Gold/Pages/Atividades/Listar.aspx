@@ -23,12 +23,13 @@
         <br />
         <asp:Button ID="btnIniciar" runat="server" OnClick="btnAbrir_Click" Text="Iniciar Atividade" />
         <br />
+        <asp:Label ID="lblMensagem" runat="server"></asp:Label>
+        <br />
 
          <asp:GridView ID="gvAtividade" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="30px" Width="100%" style="margin-right: 101px; margin-top: 0px;" OnRowCommand="gvAtividade_RowCommand">
 
             <Columns>
                 <asp:BoundField DataField="OS_ID" HeaderText="OS" />
-                <asp:BoundField DataField="ALI_PRODUTO" HeaderText="ALIANCA" />
                 <asp:BoundField DataField="FUN_NOME" HeaderText="FUNCIONARIO" />
                 <asp:BoundField DataField="MAQ_NOME" HeaderText="MAQUINA" />
                 <asp:BoundField DataField="CON_NOME" HeaderText="CONTA" />

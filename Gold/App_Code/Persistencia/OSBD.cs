@@ -141,7 +141,7 @@ namespace Gold.Persistencia
             System.Data.IDataAdapter objDataAdapter;
 
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT * FROM TBL_OS", objConexao);
+            objCommand = Mapped.Command("SELECT * FROM TBL_OS WHERE OS_ATIVADO = 1", objConexao);
             objDataAdapter = Mapped.Adapter(objCommand);
             objDataAdapter.Fill(ds);
 

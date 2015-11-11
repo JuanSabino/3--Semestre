@@ -22,6 +22,16 @@ public partial class Pages_Alianca_Cadastrar : System.Web.UI.Page
             ddlModelo.DataBind();
             ddlModelo.Items.Insert(0, "Selecione um modelo");
             ddlModelo.SelectedIndex = 0;
+
+            while (ddlTamanho.Items.Count > 0)
+            {
+                ddlTamanho.Items.RemoveAt(0);
+            }
+            for (int i = 1; i <= 35; i++)
+            {
+                ddlTamanho.Items.Add(Convert.ToString(i));
+            }
+            
           
         };
 
@@ -46,12 +56,7 @@ public partial class Pages_Alianca_Cadastrar : System.Web.UI.Page
     protected void btnCadastrar_Click(object sender, EventArgs e)
     {
         //validação no servidor
-        if ( String.IsNullOrEmpty( txtProduto.Text.Trim() ))
-        {
-            lblMensagem.Text = "Preencha o nome do produto!";
-            return;
-        }
-        if (String.IsNullOrEmpty(txtTamanho.Text.Trim()))
+        if (String.IsNullOrEmpty(ddlTamanho.SelectedItem.ToString().Trim()))
         {
             lblMensagem.Text = "Preencha o tamanho!";
             return;
@@ -65,9 +70,8 @@ public partial class Pages_Alianca_Cadastrar : System.Web.UI.Page
 
         Alianca alianca = new Alianca();
 
-        alianca.Produto = txtProduto.Text;
         alianca.modelo.ID = Convert.ToInt32(ddlModelo.SelectedItem.Value);
-        alianca.Tamanho = Convert.ToInt32(txtTamanho.Text);
+        alianca.Tamanho = Convert.ToInt32(ddlTamanho.SelectedItem.ToString());
         if (Session["OS"] != null)
         {
             alianca.OS = Convert.ToInt32(Session["OS"]);

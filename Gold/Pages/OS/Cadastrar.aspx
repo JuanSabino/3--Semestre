@@ -41,15 +41,12 @@
         <asp:Label ID="lblAlianca" runat="server" Text="Alianças:"></asp:Label>
         <br />
         <asp:Button ID="btnAddAlianca" runat="server" Text="Adicionar Alianca" OnClick="btnAddAlianca_Click" />
-&nbsp;<asp:GridView ID="gvAlianca" runat="server" AutoGenerateColumns="False" Width="100%">
+&nbsp;<asp:GridView ID="gvAlianca" runat="server" AutoGenerateColumns="False" Width="100%" OnSelectedIndexChanged="gvAlianca_SelectedIndexChanged">
             <Columns>
-                <asp:BoundField DataField="ALI_PRODUTO" HeaderText="ALIANÇA" >
+                <asp:BoundField DataField="MOD_NOME" HeaderText="MODELO" >
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                 </asp:BoundField>
                 <asp:BoundField DataField="ALI_TAMANHO" HeaderText="TAMANHO" >
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                </asp:BoundField>
-                <asp:BoundField DataField="MOD_NOME" HeaderText="MODELO" >
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                 </asp:BoundField>
                 <asp:BoundField DataField="MOD_PESO" HeaderText="PESO" >
@@ -74,7 +71,7 @@
         <hr />
 
 
-        <asp:Button ID="btncancelar" runat="server" OnClick="btncancelar_Click" Text="Cancelar" />
+        <asp:Button ID="btncancelar" runat="server" OnClick="btncancelar_Click" Text="Cancelar" ValidateRequestMode="Disabled" />
 
 
         <asp:Button ID="btnSalvar" runat="server" OnClick="btnSalvar_Click" Text="Salvar" />

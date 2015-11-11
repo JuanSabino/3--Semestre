@@ -21,7 +21,7 @@
     
         <asp:Label ID="Label1" runat="server" Text="Entrada (gramas):"></asp:Label>
         <br />
-        <asp:TextBox ID="txtEntrada" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtEntrada" runat="server" TextMode="Number"></asp:TextBox>
         <asp:RequiredFieldValidator ID="rfvEntrada" runat="server" ControlToValidate="txtEntrada" ErrorMessage="Digite a entrada em gramas!" SetFocusOnError="True">*</asp:RequiredFieldValidator>
         <br />
         <asp:Label ID="Label2" runat="server" Text="Observação:"></asp:Label>
@@ -38,7 +38,6 @@
             <Columns>
                 <asp:BoundField DataField="ALI_ID" HeaderText="CÓDIGO" />
                 <asp:BoundField DataField="OS_ID" HeaderText="OS" />
-                <asp:BoundField DataField="ALI_PRODUTO" HeaderText="ALIANCA" />
                 <asp:BoundField DataField="ALI_TAMANHO" HeaderText="TAMANHO" />
                 <asp:BoundField DataField="MOD_NOME" HeaderText="MODELO" />
                 <asp:BoundField DataField="MOD_PESO" HeaderText="PESO" />

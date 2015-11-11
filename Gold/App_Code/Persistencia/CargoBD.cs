@@ -54,7 +54,7 @@ namespace Gold.Persistencia
             System.Data.IDataAdapter objDataAdapter;
 
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT * FROM TBL_CARGO", objConexao);
+            objCommand = Mapped.Command("SELECT * FROM TBL_CARGO WHERE CAR_ATIVADO = 1", objConexao);
             objDataAdapter = Mapped.Adapter(objCommand);
             objDataAdapter.Fill(ds);
 

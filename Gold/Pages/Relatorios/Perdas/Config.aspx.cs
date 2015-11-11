@@ -5,14 +5,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Pages_Relatorios_OSPorPeriodo_Config : System.Web.UI.Page
+public partial class Pages_Relatorios_Perdas_Config : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (! Page.IsPostBack)
+        if (!Page.IsPostBack)
         {
-            ddlClassifica.Items.Add("Dias em aberto");
-            ddlClassifica.Items.Add("Data");
+            ddlClassifica.Items.Add("Conta");
+            ddlClassifica.Items.Add("Funcionario");
+            ddlClassifica.Items.Add("OS");
             ddlClassifica.SelectedIndex = 0;
         }
     }
@@ -20,7 +21,7 @@ public partial class Pages_Relatorios_OSPorPeriodo_Config : System.Web.UI.Page
     protected void btnGerar_Click(object sender, EventArgs e)
     {
         //validacao no servidor
-        if ( String.IsNullOrEmpty( txtDataInicial.Text.Trim() ))
+        if (String.IsNullOrEmpty(txtDataInicial.Text.Trim()))
         {
             lblMensagem.Text = "Digite a data inicial!";
             return;
@@ -42,8 +43,6 @@ public partial class Pages_Relatorios_OSPorPeriodo_Config : System.Web.UI.Page
         Session["DATA_FINAL"] = txtDataFinal.Text;
         Session["CLASSIFICA"] = ddlClassifica.SelectedIndex;
         Response.Redirect("Relatorio.aspx");
-
-
 
     }
 }

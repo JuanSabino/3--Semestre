@@ -38,6 +38,7 @@ public partial class Pages_OS_Fechar : System.Web.UI.Page
         OSBD bd = new OSBD();
         os = bd.Select(codigo);
         os.HoraSaida = DateTime.Now;
+        os.Ativado = true;
         bd.Update(os);
         
         Session["OS"] = null;

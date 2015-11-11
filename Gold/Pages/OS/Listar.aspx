@@ -27,6 +27,8 @@
         <br />
         <asp:Button ID="btnAbrir" runat="server" OnClick="btnAbrir_Click" Text="Abrir OS" />
         <br />
+        <asp:Label ID="lblMensagem" runat="server"></asp:Label>
+        <br />
 
          <asp:GridView ID="gvOS" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="30px" Width="100%" style="margin-right: 101px" OnRowCommand="gvOS_RowCommand">
 

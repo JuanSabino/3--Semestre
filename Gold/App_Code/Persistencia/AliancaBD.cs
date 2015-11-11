@@ -21,13 +21,12 @@ namespace Gold.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO TBL_ALIANCA (ALI_ID, ALI_PRODUTO, MOD_ID, ALI_TAMANHO, OS_ID, ALI_ATIVADO) VALUES (?id, ?produto, ?modelo, ?tamanho, ?os, ?ativado)";
+            string sql = "INSERT INTO TBL_ALIANCA (ALI_ID,  MOD_ID, ALI_TAMANHO, OS_ID, ALI_ATIVADO) VALUES (?id,  ?modelo, ?tamanho, ?os, ?ativado)";
 
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
 
             objCommand.Parameters.Add(Mapped.Parameter("?id", alianca.ID));
-            objCommand.Parameters.Add(Mapped.Parameter("?produto", alianca.Produto));
             objCommand.Parameters.Add(Mapped.Parameter("?modelo", alianca.modelo.ID));
             objCommand.Parameters.Add(Mapped.Parameter("?tamanho", alianca.Tamanho));
             objCommand.Parameters.Add(Mapped.Parameter("?os", alianca.OS));
@@ -61,7 +60,6 @@ namespace Gold.Persistencia
                 alianca.modelo.ID = Convert.ToInt32(objDataReader["MOD_ID"]);
                 alianca.modelo.Nome = Convert.ToString(objDataReader["MOD_NOME"]);
                 alianca.modelo.Peso = Convert.ToDouble(objDataReader["MOD_PESO"]);
-                alianca.modelo.Ferramenta = Convert.ToString(objDataReader["MOD_FERRAMENTA"]);
                 alianca.modelo.Descricao = Convert.ToString(objDataReader["MOD_DESCRICAO"]);
                 alianca.modelo.Largura = Convert.ToDouble(objDataReader["MOD_LARGURA"]);
                 alianca.modelo.Altura = Convert.ToDouble(objDataReader["MOD_ALTURA"]);
@@ -94,7 +92,7 @@ namespace Gold.Persistencia
             }
             else
             {
-                objCommand = Mapped.Command("SELECT * FROM TBL_ALIANCA AS ALI INNER JOIN TBL_MODELO AS MD ON ALI.MOD_ID=MD.MOD_ID", objConexao);
+                objCommand = Mapped.Command("SELECT * FROM TBL_ALIANCA AS ALI INNER JOIN TBL_MODELO AS MD ON ALI.MOD_ID=MD.MOD_ID WHERE ALI_ATIVADO = 1", objConexao);
             }
 
             objDataAdapter = Mapped.Adapter(objCommand);
@@ -106,6 +104,23 @@ namespace Gold.Persistencia
             objConexao.Dispose();
 
             return ds;
+        }
+
+        public bool Delete(int OS)
+        {
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+            string sql = "UPDATE  TBL_ALIANCA set ALI_ATIVADO = 0 where os_id = ?os";
+
+            objConexao = Mapped.Connection();
+            objCommand = Mapped.Command(sql, objConexao);
+            objCommand.Parameters.Add(Mapped.Parameter("?os", OS));
+
+            objCommand.ExecuteNonQuery();
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+            return true;
         }
 
         public AliancaBD()

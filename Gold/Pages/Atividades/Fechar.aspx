@@ -59,6 +59,8 @@
         <asp:Label ID="Label3" runat="server" Text="Saída (gramas):"></asp:Label>
         <br />
         <asp:TextBox ID="txtSaida" runat="server" EnableTheming="True"></asp:TextBox>
+        <asp:CompareValidator ID="cvSaida" runat="server" ControlToCompare="txtEntrada" ControlToValidate="txtSaida" ErrorMessage="Saida deve ser menor que entrada!" Operator="GreaterThan" SetFocusOnError="True" Type="Double">*</asp:CompareValidator>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtSaida" ErrorMessage="Preencha o peso de saida!" SetFocusOnError="True">*</asp:RequiredFieldValidator>
         <br />
         <asp:Label ID="Label4" runat="server" Text="Observação:"></asp:Label>
         <br />

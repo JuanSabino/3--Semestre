@@ -32,7 +32,7 @@ public partial class Pages_Relatorios_OSPorPeriodo_Relatorio : System.Web.UI.Pag
         lblFinal.Text = Convert.ToString(DataFinal.Day) + "/" + Convert.ToString(DataFinal.Month) + "/" + Convert.ToString(DataFinal.Year);
         if (Classifica == 0)
         {
-            lblOrdem.Text = "Maior tempo";
+            lblOrdem.Text = "Dias em aberto";
         }
         else
         {

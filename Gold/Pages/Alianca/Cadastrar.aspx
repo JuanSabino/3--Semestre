@@ -22,12 +22,6 @@
         <br />
         <asp:ValidationSummary ID="vsMensagem" runat="server" />
         <br />
-        <asp:Label ID="lblProduto" runat="server" Text="Produto:"></asp:Label>
-        <br />
-        <asp:TextBox ID="txtProduto" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="rfvProduto" runat="server" ControlToValidate="txtProduto" ErrorMessage="Digite o nome do produto!" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
-        <br />
-        <br />
         <asp:Label ID="lblModelo" runat="server" Text="Modelo:"></asp:Label>
         <br />
         <asp:DropDownList ID="ddlModelo" runat="server" DataTextField="MOD_NOME" DataValueField="MOD_ID">
@@ -36,8 +30,8 @@
         <br />
         <asp:Label ID="lblTamanho" runat="server" Text="Tamanho:"></asp:Label>
         <br />
-        <asp:TextBox ID="txtTamanho" runat="server" TextMode="Number"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="rfvTamanho" runat="server" ControlToValidate="txtTamanho" ErrorMessage="Digite o tamanho do produto!" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+        <asp:DropDownList ID="ddlTamanho" runat="server" DataTextField="MOD_NOME" DataValueField="MOD_ID">
+        </asp:DropDownList>
         <br />
         <br />
         <asp:Button ID="btnVoltar" runat="server" OnClick="btnVoltar_Click" Text="Voltar"  />

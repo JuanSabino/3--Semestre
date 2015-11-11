@@ -20,7 +20,7 @@
     <asp:Label ID="lblTitulo" runat="server" Text="Modelos de Alianças:"></asp:Label>
         <br />
         <br />
-        <asp:GridView ID="gvModelo" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="30px" Width="334px">
+        <asp:GridView ID="gvModelo" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="30px" Width="334px" OnSelectedIndexChanged="gvModelo_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="MOD_NOME" HeaderStyle-ForeColor="WhiteSmoke" HeaderText="NOME" DataFormatString="{0:C}" >
 <HeaderStyle ForeColor="WhiteSmoke"></HeaderStyle>
@@ -28,9 +28,6 @@
                 </asp:BoundField>
                 <asp:BoundField DataField="MOD_PESO" HeaderStyle-ForeColor="WhiteSmoke" HeaderText="PESO" >
 <HeaderStyle ForeColor="WhiteSmoke"></HeaderStyle>
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                </asp:BoundField>
-                <asp:BoundField DataField="MOD_FERRAMENTA" HeaderText="FERRAMENTA" >
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                 </asp:BoundField>
                 <asp:BoundField DataField="MOD_DESCRICAO" HeaderText="DESCRIÇÃO" >

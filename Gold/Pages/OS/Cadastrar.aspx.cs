@@ -77,6 +77,8 @@ public partial class Pages_OS_Cadastrar : System.Web.UI.Page
             txtObs.Text = "";
             Session["OS"] = ProximaOs();
             txtOs.Text = Convert.ToString(Session["OS"]);
+            gvAlianca.DataSource = null;
+            gvAlianca.DataBind();
         }
         else
         {
@@ -97,9 +99,17 @@ public partial class Pages_OS_Cadastrar : System.Web.UI.Page
 
     protected void btncancelar_Click(object sender, EventArgs e)
     {
+        int index = Convert.ToInt32(Session["OS"]);
+        AliancaBD bd = new AliancaBD();
+        bd.Delete(index);
         Session["OS"] = null;
         Session["LOJA"] = null;
         Session["OBS"] = null;
         Response.Redirect("Listar.aspx");
+    }
+
+    protected void gvAlianca_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }

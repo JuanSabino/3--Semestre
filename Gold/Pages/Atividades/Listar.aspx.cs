@@ -1,4 +1,5 @@
-﻿using Gold.Persistencia;
+﻿using Gold.Classes;
+using Gold.Persistencia;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -31,8 +32,20 @@ public partial class Pages_Atividades_Listar : System.Web.UI.Page
             {
                 case "fechar":
                     index = Convert.ToInt32(e.CommandArgument);
-                    Session["AliancaConta"] = index;
-                    Response.Redirect("Fechar.aspx");
+                    AliancaConta atividade = new AliancaConta();
+                    AliancaContaBD bd = new AliancaContaBD();
+                    atividade = bd.Select(index);
+                    string Data = atividade.Termino.ToShortDateString();
+                    if (Data == "01/01/0001")
+                    {
+                        Session["AliancaConta"] = index;
+                        Response.Redirect("Fechar.aspx");
+                        lblMensagem.Text = "";
+                    }
+                    else
+                    {
+                        lblMensagem.Text = "OS ja encerrada!";
+                    }
                     break;
                 default:
                     break;

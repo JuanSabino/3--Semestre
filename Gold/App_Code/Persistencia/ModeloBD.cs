@@ -31,7 +31,6 @@ namespace Gold.Persistencia
                 modelo.ID = Convert.ToInt32(objDataReader["MOD_ID"]);
                 modelo.Nome = Convert.ToString(objDataReader["MOD_NOME"]);
                 modelo.Peso = Convert.ToDouble(objDataReader["MOD_PESO"]);
-                modelo.Ferramenta = Convert.ToString(objDataReader["MOD_FERRAMENTA"]);
                 modelo.Descricao = Convert.ToString(objDataReader["MOD_DESCRICAO"]);
                 modelo.Largura = Convert.ToDouble(objDataReader["MOD_LARGURA"]);
                 modelo.Altura = Convert.ToDouble(objDataReader["MOD_ALTURA"]);

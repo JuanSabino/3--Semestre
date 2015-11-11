@@ -1,4 +1,5 @@
-﻿using Gold.Persistencia;
+﻿using Gold.Classes;
+using Gold.Persistencia;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -31,8 +32,21 @@ public partial class Pages_OS_Listar : System.Web.UI.Page
         {
             case "fechar":
                 index = Convert.ToInt32(e.CommandArgument);
-                Session["OS"] = index;
-                Response.Redirect("Fechar.aspx");
+                OS os = new OS();
+                OSBD bd = new OSBD();
+                os = bd.Select(index);
+                string Data = os.HoraSaida.ToShortDateString();
+                if (Data == "01/01/0001")
+                {
+                    Session["OS"] = index;
+                    Response.Redirect("Fechar.aspx");
+                    lblMensagem.Text = "";
+                }
+                else
+                {
+                    lblMensagem.Text = "OS ja encerrada!";
+                }
+                
                 break;
             default:
                 break;

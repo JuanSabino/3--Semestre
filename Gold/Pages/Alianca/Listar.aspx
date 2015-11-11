@@ -26,18 +26,12 @@
                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                 <ItemStyle  VerticalAlign="Middle" Width="100px" />
                 </asp:BoundField>
-                <asp:BoundField DataField="ALI_PRODUTO" HeaderText="PRODUTO" >
-                <ItemStyle  VerticalAlign="Middle" />
-                </asp:BoundField>
                 <asp:BoundField DataField="MOD_NOME" HeaderStyle-ForeColor="WhiteSmoke" HeaderText="MODELO" DataFormatString="{0:C}" >
 <HeaderStyle ForeColor="WhiteSmoke"></HeaderStyle>
                 <ItemStyle  VerticalAlign="Middle" />
                 </asp:BoundField>
                 <asp:BoundField DataField="MOD_PESO" HeaderStyle-ForeColor="WhiteSmoke" HeaderText="PESO" >
 <HeaderStyle ForeColor="WhiteSmoke"></HeaderStyle>
-                <ItemStyle  VerticalAlign="Middle" />
-                </asp:BoundField>
-                <asp:BoundField DataField="MOD_FERRAMENTA" HeaderText="FERRAMENTA" >
                 <ItemStyle  VerticalAlign="Middle" />
                 </asp:BoundField>
                 <asp:BoundField DataField="MOD_DESCRICAO" HeaderText="DESCRIÇÃO" >

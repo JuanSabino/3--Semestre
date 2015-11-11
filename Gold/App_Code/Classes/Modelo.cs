@@ -14,7 +14,6 @@ namespace Gold.Classes
         public int ID { get; set; }
         public string Nome { get; set; }
         public double Peso { get; set; }
-        public string Ferramenta { get; set; }
         public string Descricao { get; set; }
         public double Largura { get; set; }
         public double Altura { get; set; }

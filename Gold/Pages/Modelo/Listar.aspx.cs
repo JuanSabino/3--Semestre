@@ -23,4 +23,9 @@ public partial class Pages_Modelo_Listar : System.Web.UI.Page
     {
         CarregaGrid();
     }
+
+    protected void gvModelo_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }

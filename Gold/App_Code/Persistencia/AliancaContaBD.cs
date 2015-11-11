@@ -63,9 +63,10 @@ namespace Gold.Persistencia
             sql += " LEFT JOIN tbl_alianca AS ALI ON ALI_CON.ALI_ID = ALI.ALI_ID ";
             sql += " INNER JOIN tbl_conta AS CON ON ALI_CON.CON_ID = CON.CON_ID ";
             sql += " INNER JOIN tbl_maquina AS MAQ ON ALI_CON.MAQ_ID = MAQ.MAQ_ID ";
+            sql += " WHERE ALC_ID = ?codigo AND ALI_ATIVADO = 1 AND CON_ATIVADO = 1 AND MAQ_ATIVADO = 1";
 
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command(sql + " WHERE ALC_ID = ?codigo", objConexao);
+            objCommand = Mapped.Command(sql, objConexao);
             objCommand.Parameters.Add(Mapped.Parameter("?codigo", id));
 
             objDataReader = objCommand.ExecuteReader();
@@ -85,7 +86,6 @@ namespace Gold.Persistencia
                 aliancaConta.maquina.ID = Convert.ToInt32(objDataReader["MAQ_ID"]);
                 aliancaConta.maquina.Nome = Convert.ToString(objDataReader["MAQ_NOME"]);
                 aliancaConta.alianca.ID = Convert.ToInt32(objDataReader["ALI_ID"]);
-                aliancaConta.alianca.Produto = Convert.ToString(objDataReader["ALI_PRODUTO"]);
                 aliancaConta.conta.ID = Convert.ToInt32(objDataReader["CON_ID"]);
                 aliancaConta.conta.Nome = Convert.ToString(objDataReader["CON_NOME"]);
 
