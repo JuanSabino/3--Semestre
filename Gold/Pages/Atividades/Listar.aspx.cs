@@ -44,7 +44,7 @@ public partial class Pages_Atividades_Listar : System.Web.UI.Page
                     }
                     else
                     {
-                        lblMensagem.Text = "OS ja encerrada!";
+                        lblMensagem.Text = "Atividade já encerrada!";
                     }
                     break;
                 default:

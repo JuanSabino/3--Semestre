@@ -59,11 +59,13 @@ public partial class Pages_Alianca_Cadastrar : System.Web.UI.Page
         if (String.IsNullOrEmpty(ddlTamanho.SelectedItem.ToString().Trim()))
         {
             lblMensagem.Text = "Preencha o tamanho!";
+            lblMensagem.CssClass = "has-error alert-warning text-warning bg-warning";
             return;
         }
         if ( ddlModelo.SelectedIndex == 0)
         {
             lblMensagem.Text = "Selecione um modelo!";
+            lblMensagem.CssClass = "has-error alert-warning text-warning bg-warning";
             return;
         }
 
@@ -90,5 +92,6 @@ public partial class Pages_Alianca_Cadastrar : System.Web.UI.Page
             Response.Redirect("../OS/Cadastrar.aspx");
         }
         lblMensagem.Text = "Aliança cadastrada com sucesso!";
+        lblMensagem.CssClass = "alert-success text-success bg-success";
     }
 }

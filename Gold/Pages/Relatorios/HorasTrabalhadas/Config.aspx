@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Config.aspx.cs" Inherits="Pages_Relatorios_Perdas_Config" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Config.aspx.cs" Inherits="Pages_Relatorios_HorasTrabalhadas_Config" %>
 
 <%@ Register src="../../../Content/Cabecalho.ascx" tagname="Cabecalho" tagprefix="uc1" %>
 

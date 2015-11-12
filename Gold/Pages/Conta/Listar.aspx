@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" title="Contas">
 <head runat="server">
     <title></title>
     <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
@@ -13,40 +13,22 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div class="container-fluid">
 
         <uc1:Cabecalho ID="Cabecalho1" runat="server" />
-        <br />
-        <br />
 
-        <asp:Label ID="lblTitulo" runat="server" Text="Lista de Contas"></asp:Label>
-        <br />
-        <br />
+        <h3><asp:Label ID="lblTitulo" runat="server" Text="Contas"></asp:Label></h3>
 
-        <asp:GridView ID="gvConta" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="30px" Width="334px" OnSelectedIndexChanged="gvConta_SelectedIndexChanged">
+        <asp:GridView ID="gvConta" runat="server" AutoGenerateColumns="False"  OnSelectedIndexChanged="gvConta_SelectedIndexChanged" CssClass="table table-striped table-bordered table-hover table-responsive">
 
             <Columns>
-                  <asp:BoundField DataField="CON_NOME" HeaderStyle-ForeColor="WhiteSmoke" HeaderText="CONTA" DataFormatString="{0:C}" >
-<HeaderStyle ForeColor="WhiteSmoke"></HeaderStyle>
-                  <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                  <asp:BoundField DataField="CON_NOME"  HeaderText="CONTA" DataFormatString="{0:C}" >
+                  <ItemStyle  VerticalAlign="Middle" />
                 </asp:BoundField>
                   <asp:CheckBoxField DataField="CON_ATIVADO" HeaderText="ATIVADO">
-                  <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                  <ItemStyle  VerticalAlign="Middle" />
                   </asp:CheckBoxField>
             </Columns>
-
-
-            <EditRowStyle BackColor="#999999" />
-            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#E9E7E2" />
-            <SortedAscendingHeaderStyle BackColor="#506C8C" />
-            <SortedDescendingCellStyle BackColor="#FFFDF8" />
-            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-
         </asp:GridView>
 
     </div>

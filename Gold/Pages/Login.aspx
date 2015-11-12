@@ -9,7 +9,7 @@
     <script src="../Scripts/jquery-2.1.4.min.js" ></script>
     <script src="../Scripts/bootstrap.min.js" ></script>
 </head>
-<body>
+<body title="Login">
     <form id="form1" runat="server">
         <!--Controller de login do winforms
             Ja possui dois textbox e um botao.
@@ -19,7 +19,7 @@
 
     <div class="form-group container">
     
-        <asp:ValidationSummary ID="vsMensagem" runat="server" CssClass="has-error text-warning bg-warning" />
+        <asp:ValidationSummary ID="vsMensagem" runat="server" CssClass="has-error alert-warning text-warning bg-warning" />
         <br />
         <asp:Label ID="Label1" runat="server" Text="CPF:" Width="50px"></asp:Label>
         <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control"></asp:TextBox>
@@ -30,7 +30,7 @@
         <asp:RequiredFieldValidator ID="rfvSenha" runat="server" ControlToValidate="txtSenha" ErrorMessage="Senha obrigatória!" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
         <br />
         <p class="text-warning bg-warning">
-            <asp:Label ID="lblMensagem" runat="server" CssClass="text-warning"></asp:Label>
+            <asp:Label ID="lblMensagem" runat="server" CssClass="has-error alert-warning text-warning bg-warning"></asp:Label>
 
         </p>
         

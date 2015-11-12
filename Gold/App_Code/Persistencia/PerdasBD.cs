@@ -22,34 +22,34 @@ namespace Gold.Persistencia
             System.Data.IDataAdapter objDataAdapter;
 
             string Sql = " SELECT " +
-                            "(aliancaconta.ALC_ENTRADA - aliancaconta.ALC_SAIDA) AS Perda," +
-                            "conta.CON_NOME AS Conta," +
-                            "funcionario.FUN_NOME AS Funcionario," +
-                            "maquina.MAQ_NOME AS Maquina," +
-                            "alianca.OS_ID as OS" +
+                            "(aliancaconta.ALC_ENTRADA - aliancaconta.ALC_SAIDA) AS Perda, " +
+                            "conta.CON_NOME AS Conta, " +
+                            "funcionario.FUN_NOME AS Funcionario, " +
+                            "maquina.MAQ_NOME AS Maquina, " +
+                            "alianca.OS_ID as OS " +
                         " FROM " +
-                            "tbl_alianca_conta AS aliancaconta" +
-                        "INNER JOIN" +
-                            "tbl_conta AS conta" +
-                        "ON" +
-                            "aliancaconta.CON_ID = conta.CON_ID" +
-                        "INNER JOIN" +
-                            "tbl_funcionario AS funcionario" +
-                        "ON" +
-                            "aliancaconta.FUN_ID = funcionario.FUN_ID" +
-                        "INNER JOIN" +
-                            "tbl_maquina AS maquina" +
-                        "ON" +
-                            "aliancaconta.MAQ_ID = maquina.MAQ_ID" +
-                        "LEFT JOIN" +
-                            "(SELECT * FROM tbl_alianca WHERE ALI_ATIVADO = 1) AS alianca" +
-                        "ON" +
-                            "aliancaconta.ALI_ID = alianca.ALI_ID" +
-                        "WHERE" +
-                            "ALC_ATIVADO = 1" +
-                            "AND CON_ATIVADO = 1" +
-                            "AND FUN_ATIVADO = 1" +
-                            "AND MAQ_ATIVADO = 1";
+                            "tbl_alianca_conta AS aliancaconta " +
+                        "INNER JOIN " +
+                            "tbl_conta AS conta " +
+                        "ON " +
+                            "aliancaconta.CON_ID = conta.CON_ID " +
+                        "INNER JOIN " +
+                            "tbl_funcionario AS funcionario " +
+                        "ON " +
+                            "aliancaconta.FUN_ID = funcionario.FUN_ID " +
+                        "INNER JOIN " +
+                            "tbl_maquina AS maquina " +
+                        "ON " +
+                            "aliancaconta.MAQ_ID = maquina.MAQ_ID " +
+                        "LEFT JOIN " +
+                            "(SELECT * FROM tbl_alianca WHERE ALI_ATIVADO = 1) AS alianca " +
+                        "ON " +
+                            "aliancaconta.ALI_ID = alianca.ALI_ID " +
+                        "WHERE " +
+                            "ALC_ATIVADO = 1 " +
+                            "AND CON_ATIVADO = 1 " +
+                            "AND FUN_ATIVADO = 1 " +
+                            "AND MAQ_ATIVADO = 1 ";
 
             if (Classifica == 0) //Conta
             {
@@ -61,7 +61,7 @@ namespace Gold.Persistencia
             }
             else //OS
             {
-                Sql += " order by os.OS_ID ";
+                Sql += " order by alianca.OS_ID ";
             }
 
             objConexao = Mapped.Connection();

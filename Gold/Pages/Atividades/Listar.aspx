@@ -11,22 +11,20 @@
     <script src="../../Scripts/jquery-2.1.4.min.js"></script>
     <script src="../../Scripts/bootstrap.min.js"></script> 
 </head>
-<body>
+<body title="Atividades">
     <form id="form1" runat="server">
-    <div>
+    <div class="container-fluid">
     
         <uc1:Cabecalho ID="Cabecalho1" runat="server" />
+
+        <h3><asp:Label ID="Label2" runat="server" Text="Atividades"></asp:Label></h3>
         <br />
+        <asp:Button ID="btnIniciar" runat="server" OnClick="btnAbrir_Click" Text="Iniciar Atividade" CssClass="btn btn-default" />
         <br />
-    
-        <asp:Label ID="Label2" runat="server" Text="Lista de Atividades"></asp:Label>
-        <br />
-        <asp:Button ID="btnIniciar" runat="server" OnClick="btnAbrir_Click" Text="Iniciar Atividade" />
-        <br />
-        <asp:Label ID="lblMensagem" runat="server"></asp:Label>
+        <asp:Label ID="lblMensagem" runat="server" CssClass="has-error alert-warning text-warning bg-warning"></asp:Label>
         <br />
 
-         <asp:GridView ID="gvAtividade" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="30px" Width="100%" style="margin-right: 101px; margin-top: 0px;" OnRowCommand="gvAtividade_RowCommand">
+         <asp:GridView ID="gvAtividade" runat="server" AutoGenerateColumns="False"  OnRowCommand="gvAtividade_RowCommand" CssClass="table table-striped table-bordered table-hover table-responsive">
 
             <Columns>
                 <asp:BoundField DataField="OS_ID" HeaderText="OS" />
@@ -45,18 +43,6 @@
 
                 </asp:TemplateField> 
             </Columns>
-
-            <EditRowStyle BackColor="#999999" />
-            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#E9E7E2" />
-            <SortedAscendingHeaderStyle BackColor="#506C8C" />
-            <SortedDescendingCellStyle BackColor="#FFFDF8" />
-            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-
         </asp:GridView>
 
     </div>

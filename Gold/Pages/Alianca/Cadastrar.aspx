@@ -6,37 +6,30 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Cadastrar Aliança</title>
     <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
     <script src="../../Scripts/jquery-2.1.4.min.js"></script>
     <script src="../../Scripts/bootstrap.min.js"></script>  
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
+    <form id="form1" runat="server" role="form">
+    <div class="container-fluid">
         <uc1:Cabecalho ID="Cabecalho1" runat="server" />
-        <br />
-        <br />
-    
         <asp:Label ID="lblTitulo" runat="server" Text="Cadastro de Aliança:"></asp:Label>
-        <br />
-        <asp:ValidationSummary ID="vsMensagem" runat="server" />
-        <br />
+        <asp:ValidationSummary ID="vsMensagem" runat="server" CssClass="has-error alert-warning text-warning bg-warning" />
+        <div class="form-group">
         <asp:Label ID="lblModelo" runat="server" Text="Modelo:"></asp:Label>
-        <br />
-        <asp:DropDownList ID="ddlModelo" runat="server" DataTextField="MOD_NOME" DataValueField="MOD_ID">
+        <asp:DropDownList ID="ddlModelo" runat="server" DataTextField="MOD_NOME" DataValueField="MOD_ID"  CssClass="form-control">
         </asp:DropDownList>
-        <br />
-        <br />
+        </div>
+        <div class="form-group">
         <asp:Label ID="lblTamanho" runat="server" Text="Tamanho:"></asp:Label>
-        <br />
-        <asp:DropDownList ID="ddlTamanho" runat="server" DataTextField="MOD_NOME" DataValueField="MOD_ID">
+        <asp:DropDownList ID="ddlTamanho" runat="server" DataTextField="MOD_NOME" DataValueField="MOD_ID"  CssClass="form-control">
         </asp:DropDownList>
-        <br />
-        <br />
-        <asp:Button ID="btnVoltar" runat="server" OnClick="btnVoltar_Click" Text="Voltar"  />
-        <asp:Button ID="btnCadastrar" runat="server" OnClick="btnCadastrar_Click" Text="Cadastrar" />
-        <br />
+        </div>
+        <asp:Button ID="btnVoltar" runat="server" OnClick="btnVoltar_Click" Text="Voltar" CssClass="btn btn-default" CausesValidation="False"/>
+        <asp:Button ID="btnCadastrar" runat="server" OnClick="btnCadastrar_Click" Text="Cadastrar" CssClass="btn btn-default"/>
+
         <br />
         <asp:Label ID="lblMensagem" runat="server"></asp:Label>
         <br />

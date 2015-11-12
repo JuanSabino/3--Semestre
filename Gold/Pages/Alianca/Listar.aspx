@@ -6,32 +6,28 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Alianças</title>
     <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
     <script src="../../Scripts/jquery-2.1.4.min.js"></script>
     <script src="../../Scripts/bootstrap.min.js"></script>    
 </head>
 <body>
     <form id="form1" runat="server">
-    <div >
+    <div class="container-fluid">
         <uc1:Cabecalho ID="Cabecalho1" runat="server" />
-        <br />
-        <br />
-    <asp:Label ID="lblTitulo" runat="server" Text="Lista de Alianças:"></asp:Label>
-        <br />
-        <br />
-        <asp:GridView ID="gvAlianca" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="30px" Width="100%" CssClass="table table-striped table-bordered table-hover table-responsive" OnSelectedIndexChanged="gvAlianca_SelectedIndexChanged">
+
+    <h3><asp:Label ID="lblTitulo" runat="server" Text="Alianças"></asp:Label></h3>
+
+        <asp:GridView ID="gvAlianca" runat="server" AutoGenerateColumns="False"  CssClass="table table-striped table-bordered table-hover table-responsive" OnSelectedIndexChanged="gvAlianca_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="OS_ID" HeaderText="ORDEM DE SERVIÇO"  >
                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                 <ItemStyle  VerticalAlign="Middle" Width="100px" />
                 </asp:BoundField>
-                <asp:BoundField DataField="MOD_NOME" HeaderStyle-ForeColor="WhiteSmoke" HeaderText="MODELO" DataFormatString="{0:C}" >
-<HeaderStyle ForeColor="WhiteSmoke"></HeaderStyle>
+                <asp:BoundField DataField="MOD_NOME"  HeaderText="MODELO" DataFormatString="{0:C}" >
                 <ItemStyle  VerticalAlign="Middle" />
                 </asp:BoundField>
-                <asp:BoundField DataField="MOD_PESO" HeaderStyle-ForeColor="WhiteSmoke" HeaderText="PESO" >
-<HeaderStyle ForeColor="WhiteSmoke"></HeaderStyle>
+                <asp:BoundField DataField="MOD_PESO"  HeaderText="PESO" >
                 <ItemStyle  VerticalAlign="Middle" />
                 </asp:BoundField>
                 <asp:BoundField DataField="MOD_DESCRICAO" HeaderText="DESCRIÇÃO" >
@@ -47,15 +43,7 @@
                 <ItemStyle  VerticalAlign="Middle" Width="50px" />
                 </asp:CheckBoxField>
             </Columns>
-            <FooterStyle BackColor="White" ForeColor="#000066" />
-            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
-            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
-            <RowStyle ForeColor="#000066" />
-            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-            <SortedDescendingHeaderStyle BackColor="#00547E" />
+            
         </asp:GridView>
     </div>
     </form>

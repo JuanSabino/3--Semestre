@@ -41,6 +41,7 @@ public partial class Pages_OS_Listar : System.Web.UI.Page
                     Session["OS"] = index;
                     Response.Redirect("Fechar.aspx");
                     lblMensagem.Text = "";
+                    
                 }
                 else
                 {
