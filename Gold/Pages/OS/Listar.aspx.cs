@@ -45,7 +45,7 @@ public partial class Pages_OS_Listar : System.Web.UI.Page
                 }
                 else
                 {
-                    lblMensagem.Text = "OS ja encerrada!";
+                    lblMensagem.Text = "OS já encerrada!";
                 }
                 
                 break;

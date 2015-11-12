@@ -5,9 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css"   />
-    <script src="../Scripts/jquery-2.1.4.min.js" ></script>
-    <script src="../Scripts/bootstrap.min.js" ></script>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <script src="../Scripts/jquery-2.1.4.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
 </head>
 <body title="Login">
     <form id="form1" runat="server">
@@ -17,27 +17,27 @@
             Texto do segundo textbox fica armazenado na propriedade Password
          -->
 
-    <div class="form-group container">
-    
-        <asp:ValidationSummary ID="vsMensagem" runat="server" CssClass="has-error alert-warning text-warning bg-warning" />
-        <br />
-        <asp:Label ID="lblCPF" runat="server" Text="CPF:" Width="50px"></asp:Label>
-        <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="rfvCpf" runat="server" ControlToValidate="txtCpf" ErrorMessage="CPF obrigatório!" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
-        <br />
-        <asp:Label ID="lblSenha" runat="server" Text="Senha:" Width="50px"></asp:Label>
-        <asp:TextBox ID="txtSenha" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="rfvSenha" runat="server" ControlToValidate="txtSenha" ErrorMessage="Senha obrigatória!" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
-        <br />
-        <p class="text-warning bg-warning">
-            <asp:Label ID="lblMensagem" runat="server" CssClass="has-error alert-warning text-warning bg-warning"></asp:Label>
+        <div class="form-group container">
 
-        </p>
-        
-        <br />
-        <asp:Button ID="btnLogar" runat="server" OnClick="btnLogar_Click" Text="Logar" CssClass="btn btn-default" />
-    
-    </div>
+            <asp:ValidationSummary ID="vsMensagem" runat="server" CssClass="has-error alert-warning text-warning bg-warning" />
+            <br />
+            <asp:Label ID="lblCPF" runat="server" Text="CPF:" Width="50px"></asp:Label>
+            <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="rfvCpf" runat="server" ControlToValidate="txtCpf" ErrorMessage="CPF obrigatório!" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+            <br />
+            <asp:Label ID="lblSenha" runat="server" Text="Senha:" Width="50px"></asp:Label>
+            <asp:TextBox ID="txtSenha" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="rfvSenha" runat="server" ControlToValidate="txtSenha" ErrorMessage="Senha obrigatória!" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+            <br />
+            <p class="text-warning bg-warning">
+                <asp:Label ID="lblMensagem" runat="server" CssClass="has-error alert-warning text-warning bg-warning"></asp:Label>
+
+            </p>
+
+            <br />
+            <asp:Button ID="btnLogar" runat="server" OnClick="btnLogar_Click" Text="Logar" CssClass="btn btn-default" />
+
+        </div>
     </form>
 </body>
 </html>

@@ -23,7 +23,7 @@ namespace Gold.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO TBL_ALIANCA_CONTA (ALC_ID, ALC_ENTRADA, ALC_OBSENTRADA, ALC_SAIDA, ALC_OBSSAIDA,  ALC_ATIVADO, FUN_ID, MAQ_ID, CON_ID, ALI_ID) VALUES (?id, ?entrada, ?obsentrada, ?saida, ?obssaida,  ?ativado, ?funcionario, ?maquina, ?conta, ?alianca)";
+            string sql = "INSERT INTO TBL_ALIANCA_CONTA (ALC_ID, ALC_ENTRADA, ALC_OBSENTRADA,  ALC_ATIVADO, FUN_ID, MAQ_ID, CON_ID, ALI_ID) VALUES (?id, ?entrada, ?obsentrada, ?ativado, ?funcionario, ?maquina, ?conta, ?alianca)";
 
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
@@ -32,8 +32,6 @@ namespace Gold.Persistencia
             objCommand.Parameters.Add(Mapped.Parameter("?id", aliancaConta.ID));
             objCommand.Parameters.Add(Mapped.Parameter("?entrada", aliancaConta.Entrada));
             objCommand.Parameters.Add(Mapped.Parameter("?obsentrada", aliancaConta.ObsEntrada));
-            objCommand.Parameters.Add(Mapped.Parameter("?saida", aliancaConta.Saida));
-            objCommand.Parameters.Add(Mapped.Parameter("?obssaida", aliancaConta.ObsSaida));
             //objCommand.Parameters.Add(Mapped.Parameter("?inicio", aliancaConta.Inicio));
             //objCommand.Parameters.Add(Mapped.Parameter("?termino", aliancaConta.Termino));
             objCommand.Parameters.Add(Mapped.Parameter("?ativado", aliancaConta.Ativado));

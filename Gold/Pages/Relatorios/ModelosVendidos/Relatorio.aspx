@@ -5,7 +5,7 @@
 
 
 
-<%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
 
 
@@ -21,38 +21,43 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    
-    <div class="container-fluid">
-        <uc1:Cabecalho runat="server" ID="Cabecalho" />
-        <h3><asp:Label ID="lblTitulo" runat="server" Text="Relatorio de Modelos Vendidos"></asp:Label></h3>
-        <h4><asp:Label ID="lblParametro" runat="server" Text="Parametros:"></asp:Label></h4>
 
-        <asp:Label ID="lblInicio" runat="server" Text="Data Inicial:" Width="100px"></asp:Label>
-        <asp:Label ID="lblInicial" runat="server"></asp:Label>
-        <br />
-        <asp:Label ID="lblFim" runat="server" Text="Data Final:" Width="100px"></asp:Label>
-        <asp:Label ID="lblFinal" runat="server"></asp:Label>
-        <br />
-    <hr />
-    <asp:Chart ID="crtRelatorio" runat="server" Width="800px" >
-        <series>
-            <asp:Series Name="Default" ChartType="Pie" Legend="Legend1">
-            </asp:Series>
-        </series>
-        <chartareas>
-            <asp:ChartArea Name="ChartArea1">
-            </asp:ChartArea>
-        </chartareas>
-    <Legends><asp:Legend Name="Legend1" Title="MODELOS"></asp:Legend></Legends></asp:Chart>
-    <hr />
-        <asp:GridView ID="gvRelatorio" runat="server" AutoGenerateColumns="False"  OnSelectedIndexChanged="gvRelatorio_SelectedIndexChanged" CssClass="table table-striped table-responsive">
-            <Columns>
-                <asp:BoundField DataField="Modelo" HeaderText="MODELO" />
-                <asp:BoundField DataField="Quantidade" HeaderText="QUANTIDADE" />
-            </Columns>
-        </asp:GridView>
-    
-    </div>
+        <div class="container-fluid">
+            <uc1:Cabecalho runat="server" ID="Cabecalho" />
+            <h3>
+                <asp:Label ID="lblTitulo" runat="server" Text="Relatorio de Modelos Vendidos"></asp:Label></h3>
+            <h4>
+                <asp:Label ID="lblParametro" runat="server" Text="Parametros:"></asp:Label></h4>
+
+            <asp:Label ID="lblInicio" runat="server" Text="Data Inicial:" Width="100px"></asp:Label>
+            <asp:Label ID="lblInicial" runat="server"></asp:Label>
+            <br />
+            <asp:Label ID="lblFim" runat="server" Text="Data Final:" Width="100px"></asp:Label>
+            <asp:Label ID="lblFinal" runat="server"></asp:Label>
+            <br />
+            <hr />
+            <asp:Chart ID="crtRelatorio" runat="server" Width="800px">
+                <Series>
+                    <asp:Series Name="Default" ChartType="Pie" Legend="Legend1">
+                    </asp:Series>
+                </Series>
+                <ChartAreas>
+                    <asp:ChartArea Name="ChartArea1">
+                    </asp:ChartArea>
+                </ChartAreas>
+                <Legends>
+                    <asp:Legend Name="Legend1" Title="MODELOS"></asp:Legend>
+                </Legends>
+            </asp:Chart>
+            <hr />
+            <asp:GridView ID="gvRelatorio" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvRelatorio_SelectedIndexChanged" CssClass="table table-striped table-responsive">
+                <Columns>
+                    <asp:BoundField DataField="Modelo" HeaderText="MODELO" />
+                    <asp:BoundField DataField="Quantidade" HeaderText="QUANTIDADE" />
+                </Columns>
+            </asp:GridView>
+
+        </div>
     </form>
 </body>
 </html>

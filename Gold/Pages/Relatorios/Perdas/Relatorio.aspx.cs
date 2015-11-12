@@ -9,9 +9,7 @@ using System.Web.UI.WebControls;
 
 public partial class Pages_Relatorios_Perdas_Relatorio : System.Web.UI.Page
 {
-    private static DateTime DataInicial;
-    private static DateTime DataFinal;
-    private static int Classifica;
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -22,18 +20,13 @@ public partial class Pages_Relatorios_Perdas_Relatorio : System.Web.UI.Page
         /*
          *variáveis e objetos
          */
+        DateTime DataInicial;
+        DateTime DataFinal;
+        int Classifica;
         PerdasBD bd;
         DataSet ds;
         DataView dv;
-        //pega a quantidade de registros 
-        int registros;
-        //inicia a variavel do filtro
-        String Filtro = "";
-        Double Soma = 0;
         int Ordem;
-        TableRow trLinha;
-        TableCell tcCelula;
-
 
         DataInicial = Convert.ToDateTime(Session["DATA_INICIAL"]);
         DataFinal = Convert.ToDateTime(Session["DATA_FINAL"]);
@@ -45,7 +38,6 @@ public partial class Pages_Relatorios_Perdas_Relatorio : System.Web.UI.Page
         bd = new PerdasBD();
         ds = bd.SelectAll(DataInicial, DataFinal, Classifica);
         dv = ds.Tables[0].DefaultView;
-        registros = dv.Count;
 
         /*
          *verifica o filtro selecionado pelo usuario
@@ -53,6 +45,7 @@ public partial class Pages_Relatorios_Perdas_Relatorio : System.Web.UI.Page
         switch (Classifica)
         {
             //filtra por Conta
+            default:
             case 0:
                 Ordem = 1;
                 break;
@@ -64,12 +57,34 @@ public partial class Pages_Relatorios_Perdas_Relatorio : System.Web.UI.Page
             case 2:
                 Ordem = 4;
                 break;
+        }
+        ImprimeRelatorio(Ordem, dv);
+
+        lblInicial.Text = Convert.ToString(DataInicial.Day) + "/" + Convert.ToString(DataInicial.Month) + "/" + Convert.ToString(DataInicial.Year);
+        lblFinal.Text = Convert.ToString(DataFinal.Day) + "/" + Convert.ToString(DataFinal.Month) + "/" + Convert.ToString(DataFinal.Year);
+        switch (Classifica)
+        {
+            //filtra por Conta
             default:
-                Ordem = 1;
+            case 0:
+                lblOrdem.Text = "Conta";
+                break;
+            //filtra por Funcionario
+            case 1:
+                lblOrdem.Text = "Funcionario";
+                break;
+            //filtra por OS
+            case 2:
+                lblOrdem.Text = "Ordem de Servico";
                 break;
         }
+    }
 
-
+    private void ImprimeRelatorio(int Ordem, DataView dv)
+    {
+        int registros = dv.Count;
+        string Filtro = "";
+        double Soma = 0;
         /*
          *percorre todos os registros para montar o relatório
          */
@@ -81,59 +96,34 @@ public partial class Pages_Relatorios_Perdas_Relatorio : System.Web.UI.Page
             if (Filtro == "")
             {
                 Filtro = Convert.ToString(drvRegistro.Row.ItemArray[Ordem]);
-                
+
                 Soma = 0;
                 //imprime o cabecalho da tabela?
                 tblRelatorio.Rows.Add(NovoCabecalho(Ordem));
             }
             //proximo bloco
-            if ( Filtro.CompareTo(Convert.ToString(drvRegistro.Row.ItemArray[Ordem]) ) != 0)
+            if (Filtro.CompareTo(Convert.ToString(drvRegistro.Row.ItemArray[Ordem])) != 0)
             {
-                trLinha = new TableRow();
                 //imprime a soma?
-                trLinha.Cells.Add(NovaCelula("<b>Total de " + Filtro + ": </b>" ));
-                trLinha.Cells.Add(NovaCelula("<b>" + Convert.ToString(Soma) + "</b>"));
-                trLinha.Cells[1].ColumnSpan = 4;
-                tblRelatorio.Rows.Add(trLinha);
+                tblRelatorio.Rows.Add(NovoRodape(Filtro, Soma, Ordem));
                 Soma = 0;
                 Filtro = Convert.ToString(drvRegistro.Row.ItemArray[Ordem]);
                 //imprime linha em branco
-                trLinha = new TableRow();
+                TableRow trLinha = new TableRow();
                 trLinha.Cells.Add(NovaCelula("  "));
                 trLinha.Cells[0].ColumnSpan = 5;
                 tblRelatorio.Rows.Add(trLinha);
                 //imprime o cabecalho da tabela?
-                tblRelatorio.Rows.Add( NovoCabecalho(Ordem) );
+                tblRelatorio.Rows.Add(NovoCabecalho(Ordem));
             }
             //imprime os registros?
-            tblRelatorio.Rows.Add(NovaLinha(Ordem,drvRegistro));
+            tblRelatorio.Rows.Add(NovaLinha(Ordem, drvRegistro));
             //String teste = Convert.ToString(drvRegistro.Row.ItemArray[2]);
             Soma += Convert.ToDouble(drvRegistro.Row.ItemArray[0]);
-           
+
         }
         //imprime o total do ultimo bloco
-        trLinha = new TableRow();
-        trLinha.Cells.Add(NovaCelula("<b>Total de " + Filtro + ": </b>"));
-        trLinha.Cells.Add(NovaCelula("<b>" + Convert.ToString(Soma) + "</b>"));
-        trLinha.Cells[1].ColumnSpan = 4;
-        tblRelatorio.Rows.Add(trLinha);
-
-
-
-        lblInicial.Text = Convert.ToString(DataInicial.Day) + "/" + Convert.ToString(DataInicial.Month) + "/" + Convert.ToString(DataInicial.Year);
-        lblFinal.Text = Convert.ToString(DataFinal.Day) + "/" + Convert.ToString(DataFinal.Month) + "/" + Convert.ToString(DataFinal.Year);
-        if (Classifica == 0)
-        {
-            lblOrdem.Text = "Conta";
-        }
-        else if (Classifica == 1)
-        {
-            lblOrdem.Text = "Funcionario";
-        }
-        else
-        {
-            lblOrdem.Text = "Ordem de Servico";
-        }
+        tblRelatorio.Rows.Add(NovoRodape(Filtro, Soma, Ordem));
     }
 
     private TableCell NovaCelula(string Texto)
@@ -215,6 +205,30 @@ public partial class Pages_Relatorios_Perdas_Relatorio : System.Web.UI.Page
                 trLinha.Cells.Add(NovaCelula(Convert.ToString(drvRegistro.Row.ItemArray[1])));
                 break;
         }
+        return trLinha;
+    }
+
+    private TableRow NovoRodape(string Filtro, double Soma, int Ordem)
+    {
+        TableRow trLinha = new TableRow();
+        switch (Ordem)
+        {
+            //filtra por Conta
+            default:
+            case 1:
+                trLinha.Cells.Add(NovaCelula("<b>Total da conta " + Filtro + ": </b>"));
+                break;
+            //filtra por Funcionario
+            case 2:
+                trLinha.Cells.Add(NovaCelula("<b>Total do funcionário " + Filtro + ": </b>"));
+                break;
+            //filtra por OS
+            case 4:
+                trLinha.Cells.Add(NovaCelula("<b>Total da OS " + Filtro + ": </b>"));
+                break;
+        }        
+        trLinha.Cells.Add(NovaCelula("<b>" + Convert.ToString(Soma) + "</b>"));
+        trLinha.Cells[1].ColumnSpan = 4;
         return trLinha;
     }
 }
