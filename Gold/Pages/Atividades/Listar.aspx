@@ -17,7 +17,7 @@
     
         <uc1:Cabecalho ID="Cabecalho1" runat="server" />
 
-        <h3><asp:Label ID="Label2" runat="server" Text="Atividades"></asp:Label></h3>
+        <h3><asp:Label ID="lblTitulo" runat="server" Text="Atividades"></asp:Label></h3>
         <br />
         <asp:Button ID="btnIniciar" runat="server" OnClick="btnAbrir_Click" Text="Iniciar Atividade" CssClass="btn btn-default" />
         <br />

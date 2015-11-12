@@ -21,11 +21,11 @@
     
         <asp:ValidationSummary ID="vsMensagem" runat="server" CssClass="has-error alert-warning text-warning bg-warning" />
         <br />
-        <asp:Label ID="Label1" runat="server" Text="CPF:" Width="50px"></asp:Label>
+        <asp:Label ID="lblCPF" runat="server" Text="CPF:" Width="50px"></asp:Label>
         <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control"></asp:TextBox>
         <asp:RequiredFieldValidator ID="rfvCpf" runat="server" ControlToValidate="txtCpf" ErrorMessage="CPF obrigatório!" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
         <br />
-        <asp:Label ID="Label2" runat="server" Text="Senha:" Width="50px"></asp:Label>
+        <asp:Label ID="lblSenha" runat="server" Text="Senha:" Width="50px"></asp:Label>
         <asp:TextBox ID="txtSenha" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
         <asp:RequiredFieldValidator ID="rfvSenha" runat="server" ControlToValidate="txtSenha" ErrorMessage="Senha obrigatória!" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
         <br />

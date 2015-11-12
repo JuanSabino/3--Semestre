@@ -19,19 +19,19 @@
     
         <h3><asp:Label ID="Label5" runat="server" Text="Fechar OS"></asp:Label></h3>
         <div class="form-group">
-        <asp:Label ID="Label1" runat="server" Text="ID:"></asp:Label>
+        <asp:Label ID="lblId" runat="server" Text="ID:"></asp:Label>
         <asp:TextBox ID="txtId" runat="server" Enabled="False" EnableTheming="True" CssClass="form-control"></asp:TextBox>
         </div>
         <div class="form-group">
-        <asp:Label ID="Label2" runat="server" Text="Data Abertura"></asp:Label>
+        <asp:Label ID="lblAbertura" runat="server" Text="Data Abertura"></asp:Label>
         <asp:TextBox ID="txtAbertura" runat="server" Enabled="False" EnableTheming="True" CssClass="form-control"></asp:TextBox>
         </div>
         <div class="form-group">
-        <asp:Label ID="Label3" runat="server" Text="Loja:"></asp:Label>
+        <asp:Label ID="lblLoja" runat="server" Text="Loja:"></asp:Label>
         <asp:TextBox ID="txtLoja" runat="server" Enabled="False" EnableTheming="True" CssClass="form-control"></asp:TextBox>
         </div>
         <div class="form-group">
-        <asp:Label ID="Label4" runat="server" Text="Observacao:"></asp:Label>
+        <asp:Label ID="lblObs" runat="server" Text="Observacao:"></asp:Label>
         <asp:TextBox ID="txtObs" runat="server" Enabled="False" EnableTheming="True" CssClass="form-control"></asp:TextBox>
         </div>
         <div class="form-group">

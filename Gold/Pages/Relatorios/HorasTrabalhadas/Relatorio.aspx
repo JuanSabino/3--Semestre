@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Relatorio.aspx.cs" Inherits="Pages_Relatorios_Perdas_Relatorio" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Relatorio.aspx.cs" Inherits="Pages_Relatorios_HorasTrabalhadas_Relatorio" %>
 
 <%@ Register Src="~/Content/Cabecalho.ascx" TagPrefix="uc1" TagName="Cabecalho" %>
 
@@ -25,7 +25,7 @@
         <asp:Label ID="lblFim" runat="server" Text="Data Final:" Width="100px"></asp:Label>
         <asp:Label ID="lblFinal" runat="server"></asp:Label>
         <br />
-        <asp:Label ID="lblord" runat="server" Text="Ordenado por:" Width="100px"></asp:Label>
+        <asp:Label ID="lblOrd" runat="server" Text="Ordenado por:" Width="100px"></asp:Label>
         <asp:Label ID="lblOrdem" runat="server"></asp:Label>
         <br />
         <hr />
