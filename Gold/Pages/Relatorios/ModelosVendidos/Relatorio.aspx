@@ -26,6 +26,7 @@
             <uc1:Cabecalho runat="server" ID="Cabecalho" />
             <h3>
                 <asp:Label ID="lblTitulo" runat="server" Text="Relatorio de Modelos Vendidos"></asp:Label></h3>
+            <div class="jumbotron">
             <h4>
                 <asp:Label ID="lblParametro" runat="server" Text="Parametros:"></asp:Label></h4>
 
@@ -34,6 +35,7 @@
             <br />
             <asp:Label ID="lblFim" runat="server" Text="Data Final:" Width="100px"></asp:Label>
             <asp:Label ID="lblFinal" runat="server"></asp:Label>
+                </div>
             <br />
             <hr />
             <asp:Chart ID="crtRelatorio" runat="server" Width="800px">

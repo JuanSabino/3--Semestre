@@ -18,7 +18,8 @@
         <div class="container-fluid">
             <uc1:Cabecalho runat="server" ID="Cabecalho" />
             <h3>
-                <asp:Label ID="lblTitulo" runat="server" Text="Relatório de Perdas:"></asp:Label></h3>
+                <asp:Label ID="lblTitulo" runat="server" Text="Relatório de Horas Trabalhadas:"></asp:Label></h3>
+            <div class="jumbotron">
             <h4>
                 <asp:Label ID="lblParametro" runat="server" Text="Parametros:"></asp:Label></h4>
             <asp:Label ID="lblInicio" runat="server" Text="Data Inicial:" Width="100px"></asp:Label>
@@ -29,6 +30,7 @@
             <br />
             <asp:Label ID="lblOrd" runat="server" Text="Ordenado por:" Width="100px"></asp:Label>
             <asp:Label ID="lblOrdem" runat="server"></asp:Label>
+            </div>
             <br />
             <hr />
 

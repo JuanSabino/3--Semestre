@@ -8,7 +8,7 @@ using System.Web;
 namespace Gold.Persistencia
 {
     /// <summary>
-    /// Summary description for OSPorPeriodoBD
+    /// Summary description for ModelosVendidosBD
     /// </summary>
     public class ModelosVendidosBD
     {

@@ -8,6 +8,7 @@
 <head runat="server">
     <title></title>
     <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../Content/font-awesome.min.css" rel="stylesheet" />
     <script src="../../Scripts/jquery-2.1.4.min.js"></script>
     <script src="../../Scripts/bootstrap.min.js"></script>
 </head>
@@ -20,7 +21,7 @@
             <h3>
                 <asp:Label ID="lblTitulo" runat="server" Text="Atividades"></asp:Label></h3>
             <br />
-            <asp:Button ID="btnIniciar" runat="server" OnClick="btnAbrir_Click" Text="Iniciar Atividade" CssClass="btn btn-default" />
+            <asp:Button ID="btnIniciar" runat="server" OnClick="btnAbrir_Click" Text="Iniciar Atividade" CssClass="btn btn-default"  />
             <br />
             <asp:Label ID="lblMensagem" runat="server" CssClass="has-error alert-warning text-warning bg-warning"></asp:Label>
             <br />
@@ -37,9 +38,9 @@
                     <asp:BoundField DataField="ALC_OBSENTRADA" HeaderText="OBS ENTRADA" />
                     <asp:BoundField DataField="ALC_OBSSAIDA" HeaderText="OBS SAÍDA" />
                     <asp:CheckBoxField DataField="ALC_ATIVADO" HeaderText="ATIVADO" />
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="ENCERRAR" >
                         <ItemTemplate>
-                            <asp:LinkButton ID="lbFechar" runat="server" CommandName="fechar" CommandArgument='<%# Bind("ALC_ID") %>'>FINALIZAR ATIVIDADE</asp:LinkButton>
+                            <asp:LinkButton ID="lbFechar" runat="server" CommandName="fechar" CommandArgument='<%# Bind("ALC_ID") %>'><i class="fa fa-times"></i></asp:LinkButton>
                         </ItemTemplate>
 
                     </asp:TemplateField>
