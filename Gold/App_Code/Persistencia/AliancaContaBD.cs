@@ -59,6 +59,7 @@ namespace Gold.Persistencia
             string sql = "SELECT* FROM tbl_aliancaconta AS ALI_CON";
             sql += " INNER JOIN tbl_funcionario AS FUN ON ALI_CON.FUN_ID=FUN.FUN_ID ";
             sql += " LEFT JOIN tbl_alianca AS ALI ON ALI_CON.ALI_ID = ALI.ALI_ID ";
+            sql += " LEFT JOIN tbl_modelo AS MODE ON ALI.MOD_ID = MODE.MOD_ID ";
             sql += " INNER JOIN tbl_conta AS CON ON ALI_CON.CON_ID = CON.CON_ID ";
             sql += " INNER JOIN tbl_maquina AS MAQ ON ALI_CON.MAQ_ID = MAQ.MAQ_ID ";
             sql += " WHERE ACO_ID = ?codigo  AND CON_ATIVADO = 1 AND MAQ_ATIVADO = 1";
@@ -84,8 +85,10 @@ namespace Gold.Persistencia
                 aliancaConta.maquina.ID = Convert.ToInt32(objDataReader["MAQ_ID"]);
                 aliancaConta.maquina.Nome = Convert.ToString(objDataReader["MAQ_NOME"]);
                 aliancaConta.alianca.ID = Convert.ToInt32(objDataReader["ALI_ID"]);
+                aliancaConta.alianca.modelo.Nome = Convert.ToString(objDataReader["MOD_NOME"]);
                 aliancaConta.conta.ID = Convert.ToInt32(objDataReader["CON_ID"]);
                 aliancaConta.conta.Nome = Convert.ToString(objDataReader["CON_NOME"]);
+
 
             }
 
@@ -120,11 +123,11 @@ namespace Gold.Persistencia
                 sql += " WHERE ACO_ATIVADO = 1 ";
                 if (i == 1)
                 {
-                    sql += " AND ALI_CON.ACO_TERMINO IS NOT NULL";
+                    sql += " AND ALI_CON.ACO_TERMINO IS  NULL";
                 }
                 else
                 {
-                    sql += " AND ALI_CON.ACO_TERMINO IS NULL";
+                    sql += " AND ALI_CON.ACO_TERMINO IS NOT NULL";
                 }
                 
                 objCommand = Mapped.Command(sql , objConexao);

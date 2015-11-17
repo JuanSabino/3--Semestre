@@ -76,7 +76,7 @@ namespace Gold.Persistencia
             return alianca;
         }
 
-        public DataSet SelectAll(int OS = 0)
+        public DataSet SelectAll(int OS = 0, int i = 0)
         {
             DataSet ds = new DataSet();
 
@@ -85,14 +85,30 @@ namespace Gold.Persistencia
             System.Data.IDataAdapter objDataAdapter;
 
             objConexao = Mapped.Connection();
+            String Sql = "";
+            Sql += "SELECT * FROM TBL_ALIANCA AS ALI INNER JOIN TBL_MODELO AS MODELO ON ALI.MOD_ID=MODELO.MOD_ID WHERE MOD_ATIVADO = 1 ";
+
+            if (i != 0)
+            {                
+                if (i == 1)
+                {
+                    Sql += " AND ALI_ID IN(SELECT ALI_ID FROM tbl_aliancaconta WHERE ACO_TERMINO IS  NULL) ";
+                }
+                else if (i == 2)
+                {
+                    Sql += " AND ALI_ID NOT IN(SELECT ALI_ID FROM tbl_aliancaconta WHERE ACO_TERMINO IS  NULL) ";
+                    Sql += " AND OS_ID NOT IN (SELECT OS_ID FROM tbl_os WHERE OS_DATASAIDA IS NOT NULL) ";
+                }
+            }
             if (OS != 0)
             {
-                objCommand = Mapped.Command("SELECT * FROM TBL_ALIANCA AS ALI INNER JOIN TBL_MODELO AS MODELO ON ALI.MOD_ID=MODELO.MOD_ID WHERE OS_ID = ?os AND  MOD_ATIVADO = 1", objConexao);
+                Sql += " AND OS_ID = ?os  ";
+                objCommand = Mapped.Command(Sql, objConexao);
                 objCommand.Parameters.Add(Mapped.Parameter("?os", OS));
             }
             else
             {
-                objCommand = Mapped.Command("SELECT * FROM TBL_ALIANCA AS ALI INNER JOIN TBL_MODELO AS MD ON ALI.MOD_ID=MD.MOD_ID ", objConexao);
+                objCommand = Mapped.Command(Sql, objConexao);
             }
 
             objDataAdapter = Mapped.Adapter(objCommand);

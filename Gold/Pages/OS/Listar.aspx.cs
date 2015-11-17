@@ -15,7 +15,7 @@ public partial class Pages_OS_Listar : System.Web.UI.Page
     private void CarregaGrid()
     {
         OSBD osbd = new OSBD();
-        DataSet ds = osbd.SelectAll();
+        DataSet ds = osbd.SelectAll(1);
         if (ds.Tables[0].Rows.Count != 0)
         {
             gvOS.DataSource = ds.Tables[0].DefaultView;
@@ -25,6 +25,9 @@ public partial class Pages_OS_Listar : System.Web.UI.Page
         {
             lblVazio.Text = "Nenhum registro encontrado!";
         }
+        ds = osbd.SelectAll(2);
+        gvFinalizados.DataSource = ds.Tables[0].DefaultView;
+        gvFinalizados.DataBind();
     }
 
     protected void Page_Load(object sender, EventArgs e)

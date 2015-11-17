@@ -18,7 +18,7 @@
             <uc1:Cabecalho runat="server" ID="Cabecalho" />
             <asp:ValidationSummary ID="vsMensagem" runat="server" CssClass="has-error alert-warning text-warning bg-warning" />
             <div class="form-group">
-                <asp:Label ID="lblEntrada" runat="server" Text="Entrada (gramas):"></asp:Label>
+                <asp:Label ID="lblEntrada" runat="server" Text="Peso (gramas):"></asp:Label>
                 <asp:TextBox ID="txtEntrada" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvEntrada" runat="server" ControlToValidate="txtEntrada" ErrorMessage="Digite a entrada em gramas!" SetFocusOnError="True">*</asp:RequiredFieldValidator>
             </div>
@@ -36,7 +36,7 @@
 
             <asp:GridView ID="gvAlianca" runat="server" AutoGenerateColumns="False" OnRowCommand="gvAlianca_RowCommand" CausesValidation="False" CssClass="table table-striped table-bordered table-hover table-responsive">
                 <Columns>
-                    <asp:BoundField DataField="ALI_ID" HeaderText="CÓDIGO" />
+                    <asp:BoundField DataField="ALI_ID" HeaderText="CÓDIGO" Visible="False" />
                     <asp:BoundField DataField="OS_ID" HeaderText="OS" />
                     <asp:BoundField DataField="ALI_TAMANHO" HeaderText="TAMANHO" />
                     <asp:BoundField DataField="MOD_NOME" HeaderText="MODELO" />

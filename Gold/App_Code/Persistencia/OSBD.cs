@@ -132,7 +132,7 @@ namespace Gold.Persistencia
             return os;
         }
 
-        public DataSet SelectAll()
+        public DataSet SelectAll(int i)
         {
             DataSet ds = new DataSet();
 
@@ -141,7 +141,15 @@ namespace Gold.Persistencia
             System.Data.IDataAdapter objDataAdapter;
 
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command("SELECT * FROM TBL_OS WHERE OS_ATIVADO = 1", objConexao);
+            if (i == 1)
+            {
+                objCommand = Mapped.Command("SELECT * FROM TBL_OS WHERE OS_ATIVADO = 1 and OS_DATASAIDA is null", objConexao);
+            }
+            else
+            {
+                objCommand = Mapped.Command("SELECT * FROM TBL_OS WHERE OS_ATIVADO = 1 and OS_DATASAIDA is not  null", objConexao);
+            }
+            
             objDataAdapter = Mapped.Adapter(objCommand);
             objDataAdapter.Fill(ds);
 

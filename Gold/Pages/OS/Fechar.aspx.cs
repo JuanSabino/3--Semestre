@@ -2,6 +2,7 @@
 using Gold.Persistencia;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -34,6 +35,10 @@ public partial class Pages_OS_Fechar : System.Web.UI.Page
     protected void btnFinalizar_Click(object sender, EventArgs e)
     {
         int codigo = Convert.ToInt32(Session["OS"]);
+
+        AliancaBD aliBD = new AliancaBD();
+        DataSet ds = aliBD.SelectAll(codigo, 1);
+
         OS os = new OS();
         OSBD bd = new OSBD();
         os = bd.Select(codigo);

@@ -57,6 +57,34 @@
             </asp:GridView>
             <h4>
                 <asp:Label ID="lblVazio" runat="server" Text=""></asp:Label></h4>
+            <hr />
+
+
+
+            <asp:GridView ID="gvFinalizados" runat="server" AutoGenerateColumns="False"  CssClass="table table-striped table-bordered table-hover table-responsive">
+
+                <Columns>
+                    <asp:BoundField DataField="OS_ID" HeaderText="CÓDIGO">
+                        <ItemStyle VerticalAlign="Middle" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="OS_DATAENTRADA" HeaderText="DATA ENTRADA">
+                        <ItemStyle VerticalAlign="Middle" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="OS_DATASAIDA" HeaderText="DATA SAÍDA">
+                        <ItemStyle VerticalAlign="Middle" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="OS_LOJA" HeaderText="LOJA">
+                        <ItemStyle VerticalAlign="Middle" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="OS_OBS" HeaderText="OBSERVAÇÃO">
+                        <ItemStyle VerticalAlign="Middle" />
+                    </asp:BoundField>
+                    <asp:CheckBoxField DataField="OS_ATIVADO" HeaderText="ATIVADO">
+                        <ItemStyle VerticalAlign="Middle" />
+                    </asp:CheckBoxField>
+                </Columns>
+            </asp:GridView>
+
 
 
         </div>

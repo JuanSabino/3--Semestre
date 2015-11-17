@@ -24,7 +24,7 @@ public partial class Pages_Atividades_Fechar : System.Web.UI.Page
 
             txtID.Text = Convert.ToString(aliancaConta.ID);
             txtOS.Text = Convert.ToString(aliancaConta.alianca.OS);
-            txtAlianca.Text = Convert.ToString(aliancaConta.alianca.ID);
+            txtAlianca.Text = Convert.ToString(aliancaConta.alianca.modelo.Nome);
             txtEntrada.Text = Convert.ToString(aliancaConta.Entrada);
             txtObsEntrada.Text = Convert.ToString(aliancaConta.ObsEntrada);
             txtInicio.Text = Convert.ToString(aliancaConta.Inicio);

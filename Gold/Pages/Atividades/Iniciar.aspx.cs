@@ -18,7 +18,7 @@ public partial class Pages_Atividades_Iniciar : System.Web.UI.Page
         //buscar em atividades, e exibir somente as alianças que não estão sendo trabalhadas
         AliancaBD bd = new AliancaBD();
         //busca todas as aliancas da ordem de servico
-        DataSet ds = bd.SelectAll();
+        DataSet ds = bd.SelectAll(0,2);
         gvAlianca.DataSource = ds.Tables[0].DefaultView;
         gvAlianca.DataBind();
     }
