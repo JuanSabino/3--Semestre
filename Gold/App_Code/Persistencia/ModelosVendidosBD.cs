@@ -31,7 +31,6 @@ namespace Gold.Persistencia
                                     "on " +
                                         "os.os_id = alianca.os_id " +
                                     "where alianca.mod_id = modelo.mod_id " +
-                                        "and alianca.ALI_ATIVADO = 1 " +
                                         "and os.OS_ATIVADO = 1 " +
                                         "and cast(os.OS_DATAENTRADA as Date)  between ?DataInicial and ?DataFinal ) as Quantidade " +
                           "from tbl_modelo as modelo " + 

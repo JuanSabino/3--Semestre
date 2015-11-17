@@ -14,6 +14,8 @@ public partial class Pages_Atividades_Iniciar : System.Web.UI.Page
     //METODO PARA CARREGAR A TABELA 
     private void CarregaGrid()
     {
+        //TODO
+        //buscar em atividades, e exibir somente as alianças que não estão sendo trabalhadas
         AliancaBD bd = new AliancaBD();
         //busca todas as aliancas da ordem de servico
         DataSet ds = bd.SelectAll();

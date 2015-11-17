@@ -34,7 +34,7 @@ namespace Gold.Persistencia
                 modelo.Descricao = Convert.ToString(objDataReader["MOD_DESCRICAO"]);
                 modelo.Largura = Convert.ToDouble(objDataReader["MOD_LARGURA"]);
                 modelo.Altura = Convert.ToDouble(objDataReader["MOD_ALTURA"]);
-                modelo.Ativado = Convert.ToBoolean(objDataReader["CAR_ATIVADO"]);
+                modelo.Ativado = Convert.ToBoolean(objDataReader["MOD_ATIVADO"]);
             }
 
             objDataReader.Close();

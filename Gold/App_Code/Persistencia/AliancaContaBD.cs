@@ -23,7 +23,7 @@ namespace Gold.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO TBL_ALIANCA_CONTA (ALC_ID, ALC_ENTRADA, ALC_OBSENTRADA,  ALC_ATIVADO, FUN_ID, MAQ_ID, CON_ID, ALI_ID) VALUES (?id, ?entrada, ?obsentrada, ?ativado, ?funcionario, ?maquina, ?conta, ?alianca)";
+            string sql = "INSERT INTO TBL_ALIANCACONTA (ACO_ID, ACO_ENTRADA, ACO_OBSENTRADA,  ACO_ATIVADO, FUN_ID, MAQ_ID, CON_ID, ALI_ID) VALUES (?id, ?entrada, ?obsentrada, ?ativado, ?funcionario, ?maquina, ?conta, ?alianca)";
 
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
@@ -56,12 +56,12 @@ namespace Gold.Persistencia
             System.Data.IDbCommand objCommand;
             System.Data.IDataReader objDataReader;
 
-            string sql = "SELECT* FROM tbl_alianca_conta AS ALI_CON";
+            string sql = "SELECT* FROM tbl_aliancaconta AS ALI_CON";
             sql += " INNER JOIN tbl_funcionario AS FUN ON ALI_CON.FUN_ID=FUN.FUN_ID ";
             sql += " LEFT JOIN tbl_alianca AS ALI ON ALI_CON.ALI_ID = ALI.ALI_ID ";
             sql += " INNER JOIN tbl_conta AS CON ON ALI_CON.CON_ID = CON.CON_ID ";
             sql += " INNER JOIN tbl_maquina AS MAQ ON ALI_CON.MAQ_ID = MAQ.MAQ_ID ";
-            sql += " WHERE ALC_ID = ?codigo  AND CON_ATIVADO = 1 AND MAQ_ATIVADO = 1";
+            sql += " WHERE ACO_ID = ?codigo  AND CON_ATIVADO = 1 AND MAQ_ATIVADO = 1";
 
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
@@ -71,14 +71,14 @@ namespace Gold.Persistencia
             while (objDataReader.Read())
             {
                 aliancaConta = new AliancaConta();
-                aliancaConta.ID = Convert.ToInt32(objDataReader["ALC_ID"]);
-                aliancaConta.Entrada = Convert.ToInt32(objDataReader["ALC_ENTRADA"]);
-                aliancaConta.ObsEntrada = Convert.ToString(objDataReader["ALC_OBSENTRADA"]);
-                aliancaConta.Saida = Convert.ToInt32(objDataReader["ALC_SAIDA"]);
-                aliancaConta.ObsSaida = Convert.ToString(objDataReader["ALC_OBSSAIDA"]);
-                aliancaConta.Inicio = Convert.ToDateTime(objDataReader["ALC_INICIO"]);
-                aliancaConta.Termino = (objDataReader["ALC_TERMINO"] is DBNull) ? Convert.ToDateTime(null) : Convert.ToDateTime(objDataReader["ALC_TERMINO"]);
-                aliancaConta.Ativado = Convert.ToBoolean(objDataReader["ALC_ATIVADO"]);
+                aliancaConta.ID = Convert.ToInt32(objDataReader["ACO_ID"]);
+                aliancaConta.Entrada = Convert.ToInt32(objDataReader["ACO_ENTRADA"]);
+                aliancaConta.ObsEntrada = Convert.ToString(objDataReader["ACO_OBSENTRADA"]);
+                aliancaConta.Saida = Convert.ToInt32(objDataReader["ACO_SAIDA"]);
+                aliancaConta.ObsSaida = Convert.ToString(objDataReader["ACO_OBSSAIDA"]);
+                aliancaConta.Inicio = Convert.ToDateTime(objDataReader["ACO_INICIO"]);
+                aliancaConta.Termino = (objDataReader["ACO_TERMINO"] is DBNull) ? Convert.ToDateTime(null) : Convert.ToDateTime(objDataReader["ACO_TERMINO"]);
+                aliancaConta.Ativado = Convert.ToBoolean(objDataReader["ACO_ATIVADO"]);
                 aliancaConta.funcionario.ID = Convert.ToInt32(objDataReader["FUN_ID"]);
                 aliancaConta.funcionario.Nome = Convert.ToString(objDataReader["FUN_NOME"]);
                 aliancaConta.maquina.ID = Convert.ToInt32(objDataReader["MAQ_ID"]);
@@ -99,7 +99,7 @@ namespace Gold.Persistencia
             return aliancaConta;
         }
 
-        public DataSet SelectAll(bool ativado = false)
+        public DataSet SelectAll(bool ativado = false, int i = 1)
         {
             DataSet ds = new DataSet();
 
@@ -107,7 +107,7 @@ namespace Gold.Persistencia
             System.Data.IDbCommand objCommand;
             System.Data.IDataAdapter objDataAdapter;
 
-            string sql = "SELECT* FROM tbl_alianca_conta AS ALI_CON";
+            string sql = "SELECT* FROM tbl_aliancaconta AS ALI_CON";
             sql += " INNER JOIN tbl_funcionario AS FUN ON ALI_CON.FUN_ID=FUN.FUN_ID ";
             sql += " LEFT JOIN tbl_alianca AS ALI ON ALI_CON.ALI_ID = ALI.ALI_ID ";
             sql += " INNER JOIN tbl_conta AS CON ON ALI_CON.CON_ID = CON.CON_ID ";
@@ -117,7 +117,17 @@ namespace Gold.Persistencia
             objConexao = Mapped.Connection();
             if (ativado)
             {
-                objCommand = Mapped.Command(sql + " WHERE ALC_ATIVADO = 1", objConexao);
+                sql += " WHERE ACO_ATIVADO = 1 ";
+                if (i == 1)
+                {
+                    sql += " AND ALI_CON.ACO_TERMINO IS NOT NULL";
+                }
+                else
+                {
+                    sql += " AND ALI_CON.ACO_TERMINO IS NULL";
+                }
+                
+                objCommand = Mapped.Command(sql , objConexao);
             }
             else
             {
@@ -138,7 +148,7 @@ namespace Gold.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "UPDATE TBL_ALIANCA_CONTA SET ALC_ENTRADA = ?Entrada, ALC_OBSENTRADA = ?ObsEntrada, ALC_SAIDA = ?Saida, ALC_OBSSAIDA = ?ObsSaida, ALC_INICIO = ?Inicio, ALC_TERMINO = ?Termino, ALC_ATIVADO = ?Ativado, FUN_ID = ?funcionario, MAQ_ID = ?maquina, CON_ID = ?conta, ALI_ID = ?alianca  WHERE ALC_ID = ?codigo";
+            string sql = "UPDATE TBL_ALIANCACONTA SET ACO_ENTRADA = ?Entrada, ACO_OBSENTRADA = ?ObsEntrada, ACO_SAIDA = ?Saida, ACO_OBSSAIDA = ?ObsSaida, ACO_INICIO = ?Inicio, ACO_TERMINO = ?Termino, ACO_ATIVADO = ?Ativado, FUN_ID = ?funcionario, MAQ_ID = ?maquina, CON_ID = ?conta, ALI_ID = ?alianca  WHERE ACO_ID = ?codigo";
             //abre uma conexao com banco de dados
             objConexao = Mapped.Connection();
             //estruturar o comando a ser executado

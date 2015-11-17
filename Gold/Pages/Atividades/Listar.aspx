@@ -46,6 +46,21 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+            <hr />
+            <asp:GridView ID="gvEncerradas" runat="server" AutoGenerateColumns="False"  CssClass="table table-striped table-bordered table-hover table-responsive">
+
+                <Columns>
+                    <asp:BoundField DataField="OS_ID" HeaderText="OS" />
+                    <asp:BoundField DataField="FUN_NOME" HeaderText="FUNCIONARIO" />
+                    <asp:BoundField DataField="MAQ_NOME" HeaderText="MAQUINA" />
+                    <asp:BoundField DataField="CON_NOME" HeaderText="CONTA" />
+                    <asp:BoundField DataField="ALC_INICIO" HeaderText="DATA ABERTURA" />
+                    <asp:BoundField DataField="ALC_TERMINO" HeaderText="DATA ENCERRAMENTO" />
+                    <asp:BoundField DataField="ALC_OBSENTRADA" HeaderText="OBS ENTRADA" />
+                    <asp:BoundField DataField="ALC_OBSSAIDA" HeaderText="OBS SAÍDA" />
+                    <asp:CheckBoxField DataField="ALC_ATIVADO" HeaderText="ATIVADO" />
+                </Columns>
+            </asp:GridView>
 
         </div>
     </form>

@@ -15,10 +15,12 @@ public partial class Pages_Atividades_Listar : System.Web.UI.Page
         private void CarregaGrid()
         {
             AliancaContaBD aliancabd = new AliancaContaBD();
-            DataSet ds = aliancabd.SelectAll();
+            DataSet ds = aliancabd.SelectAll(true,1);
             gvAtividade.DataSource = ds.Tables[0].DefaultView;
             gvAtividade.DataBind();
-        }
+            ds = aliancabd.SelectAll(true,2);
+            gvEncerradas.DataSource = ds.Tables[0].DefaultView;
+    }
 
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -23,11 +23,11 @@ namespace Gold.Persistencia
 
             string Sql = " SELECT " +
                             "conta.CON_NOME AS Conta, " +
-                            "TIMESTAMPDIFF(MINUTE, aliancaconta.ALC_INICIO, ifnull(aliancaconta.ALC_TERMINO, now())) AS HorasTrabalhadas, " +
+                            "TIMESTAMPDIFF(MINUTE, aliancaconta.ACO_INICIO, ifnull(aliancaconta.ACO_TERMINO, now())) AS HorasTrabalhadas, " +
                             "funcionario.FUN_NOME AS Funcionario, " +
                             "os.OS_ID AS OS " +
                         " FROM " +
-                            "tbl_alianca_conta AS aliancaconta " +
+                            "tbl_aliancaconta AS aliancaconta " +
                         "INNER JOIN " +
                             "tbl_conta AS conta " +
                         "ON " +
@@ -45,10 +45,10 @@ namespace Gold.Persistencia
                         "ON " +
                             "alianca.OS_ID = os.OS_ID " +
                         "WHERE " +
-                            "ALC_ATIVADO = 1 " +
+                            "ACO_ATIVADO = 1 " +
                             "AND CON_ATIVADO = 1 " +
                             " " +
-                            "and cast(aliancaconta.ALC_INICIO as Date)  between ?DataInicial and ?DataFinal  ";
+                            "and cast(aliancaconta.ACO_INICIO as Date)  between ?DataInicial and ?DataFinal  ";
 
             if (Classifica == 0) //Conta
             {

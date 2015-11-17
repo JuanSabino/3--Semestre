@@ -34,7 +34,7 @@
                 </asp:RadioButtonList>
             </div>
 
-            <asp:GridView ID="gvAlianca" runat="server" AutoGenerateColumns="False" OnRowCommand="gvAlianca_RowCommand" CssClass="table table-striped table-bordered table-hover table-responsive">
+            <asp:GridView ID="gvAlianca" runat="server" AutoGenerateColumns="False" OnRowCommand="gvAlianca_RowCommand" CausesValidation="False" CssClass="table table-striped table-bordered table-hover table-responsive">
                 <Columns>
                     <asp:BoundField DataField="ALI_ID" HeaderText="CÓDIGO" />
                     <asp:BoundField DataField="OS_ID" HeaderText="OS" />

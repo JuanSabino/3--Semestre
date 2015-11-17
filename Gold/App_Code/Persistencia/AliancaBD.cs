@@ -21,7 +21,7 @@ namespace Gold.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "INSERT INTO TBL_ALIANCA (ALI_ID,  MOD_ID, ALI_TAMANHO, OS_ID, ALI_ATIVADO) VALUES (?id,  ?modelo, ?tamanho, ?os, ?ativado)";
+            string sql = "INSERT INTO TBL_ALIANCA (ALI_ID,  MOD_ID, ALI_TAMANHO, OS_ID) VALUES (?id,  ?modelo, ?tamanho, ?os)";
 
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);
@@ -30,7 +30,7 @@ namespace Gold.Persistencia
             objCommand.Parameters.Add(Mapped.Parameter("?modelo", alianca.modelo.ID));
             objCommand.Parameters.Add(Mapped.Parameter("?tamanho", alianca.Tamanho));
             objCommand.Parameters.Add(Mapped.Parameter("?os", alianca.OS));
-            objCommand.Parameters.Add(Mapped.Parameter("?ativado", alianca.Ativado));
+            //objCommand.Parameters.Add(Mapped.Parameter("?ativado", alianca.Ativado));
 
             objCommand.ExecuteNonQuery();
             objConexao.Close();
@@ -87,12 +87,12 @@ namespace Gold.Persistencia
             objConexao = Mapped.Connection();
             if (OS != 0)
             {
-                objCommand = Mapped.Command("SELECT * FROM TBL_ALIANCA AS ALI INNER JOIN TBL_MODELO AS MODELO ON ALI.MOD_ID=MODELO.MOD_ID WHERE OS_ID = ?os AND ALI_ATIVADO = 1 AND MOD_ATIVADO = 1", objConexao);
+                objCommand = Mapped.Command("SELECT * FROM TBL_ALIANCA AS ALI INNER JOIN TBL_MODELO AS MODELO ON ALI.MOD_ID=MODELO.MOD_ID WHERE OS_ID = ?os AND  MOD_ATIVADO = 1", objConexao);
                 objCommand.Parameters.Add(Mapped.Parameter("?os", OS));
             }
             else
             {
-                objCommand = Mapped.Command("SELECT * FROM TBL_ALIANCA AS ALI INNER JOIN TBL_MODELO AS MD ON ALI.MOD_ID=MD.MOD_ID WHERE ALI_ATIVADO = 1", objConexao);
+                objCommand = Mapped.Command("SELECT * FROM TBL_ALIANCA AS ALI INNER JOIN TBL_MODELO AS MD ON ALI.MOD_ID=MD.MOD_ID ", objConexao);
             }
 
             objDataAdapter = Mapped.Adapter(objCommand);
@@ -110,7 +110,7 @@ namespace Gold.Persistencia
         {
             System.Data.IDbConnection objConexao;
             System.Data.IDbCommand objCommand;
-            string sql = "UPDATE  TBL_ALIANCA set ALI_ATIVADO = 0 where os_id = ?os";
+            string sql = "DELETE FROM  TBL_ALIANCA  where os_id = ?os";
 
             objConexao = Mapped.Connection();
             objCommand = Mapped.Command(sql, objConexao);

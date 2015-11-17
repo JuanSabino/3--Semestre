@@ -43,8 +43,7 @@ namespace Gold.Persistencia
                         "on " +
                             "alianca.mod_id = modelo.mod_id " +
                         "where " +
-                            "alianca.ali_ativado = 1 " +
-                            "and os.os_ativado = 1 " +
+                            " os.os_ativado = 1 " +
                             "and modelo.mod_ativado = 1 " +
                             "and cast(os.OS_DATAENTRADA as Date)  between ?DataInicial and ?DataFinal ";
             if (Classifica == 0) //Maior tempo
