@@ -16,11 +16,22 @@ public partial class Pages_Atividades_Listar : System.Web.UI.Page
         {
             AliancaContaBD aliancabd = new AliancaContaBD();
             DataSet ds = aliancabd.SelectAll(true,1);
-            gvAtividade.DataSource = ds.Tables[0].DefaultView;
-            gvAtividade.DataBind();
-            ds = aliancabd.SelectAll(true,2);
+           
+            if (ds.Tables[0].Rows.Count != 0)
+            {
+                gvAtividade.DataSource = ds.Tables[0].DefaultView;
+                gvAtividade.DataBind();
+                
+            }
+            else
+            {
+                lblVazio.Text = "Nenhum registro encontrado!";
+            }
+            ds = aliancabd.SelectAll(true, 2);
             gvEncerradas.DataSource = ds.Tables[0].DefaultView;
-    }
+            gvEncerradas.DataBind();
+
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {

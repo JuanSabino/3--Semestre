@@ -36,6 +36,12 @@ public partial class Pages_Relatorios_HorasTrabalhadas_Relatorio : System.Web.UI
          */
         bd = new HorasTrabalhadasBD();
         ds = bd.SelectAll(DataInicial, DataFinal, Classifica);
+        lblVazio.Text = "";
+        if (ds.Tables[0].Rows.Count == 0)
+        {
+            lblVazio.Text = "Nenhum registro encontrado com os parâmetros informados.";
+            return;
+        }
         dv = ds.Tables[0].DefaultView;
 
         /*

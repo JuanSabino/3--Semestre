@@ -14,8 +14,16 @@ public partial class Pages_Maquina_Listar : System.Web.UI.Page
     {
         MaquinaBD bd = new MaquinaBD();
         DataSet ds = bd.SelectAll();
-        gvMaquina.DataSource = ds.Tables[0].DefaultView;
-        gvMaquina.DataBind();
+        
+        if (ds.Tables[0].Rows.Count != 0)
+        {
+            gvMaquina.DataSource = ds.Tables[0].DefaultView;
+            gvMaquina.DataBind();
+        }
+        else
+        {
+            lblVazio.Text = "Nenhum registro encontrado!";
+        }
     }
 
     protected void Page_Load(object sender, EventArgs e)

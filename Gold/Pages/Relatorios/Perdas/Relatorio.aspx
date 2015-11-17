@@ -36,6 +36,8 @@
         </div>
         <asp:Table ID="tblRelatorio" runat="server" CellPadding="5" CellSpacing="5" Width="100%" CssClass="table table-striped table-responsive">
         </asp:Table>
+        <h4>
+            <asp:Label ID="lblVazio" runat="server" Text=""></asp:Label></h4>
     </form>
 </body>
 </html>

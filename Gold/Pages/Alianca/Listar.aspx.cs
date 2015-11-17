@@ -14,8 +14,17 @@ public partial class Pages_Alianca_Listar : System.Web.UI.Page
     {
         AliancaBD bd = new AliancaBD();
         DataSet ds = bd.SelectAll();
-        gvAlianca.DataSource = ds.Tables[0].DefaultView;
-        gvAlianca.DataBind();
+        if (ds.Tables[0].Rows.Count != 0)
+        {
+            gvAlianca.DataSource = ds.Tables[0].DefaultView;
+            gvAlianca.DataBind();
+            lblVazio.Text = "";
+        }
+        else
+        {
+            lblVazio.Text = "Nenhum registro encontrado!";
+        }
+        
     }
 
     protected void Page_Load(object sender, EventArgs e)

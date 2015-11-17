@@ -15,8 +15,16 @@ public partial class Pages_Modelo_Listar : System.Web.UI.Page
     {
         ModeloBD bd = new ModeloBD();
         DataSet ds = bd.SelectAll();
-        gvModelo.DataSource = ds.Tables[0].DefaultView;
-        gvModelo.DataBind();
+        
+        if (ds.Tables[0].Rows.Count != 0)
+        {
+            gvModelo.DataSource = ds.Tables[0].DefaultView;
+            gvModelo.DataBind();
+        }
+        else
+        {
+            lblVazio.Text = "Nenhum registro encontrado!";
+        }
     }
 
     protected void Page_Load(object sender, EventArgs e)

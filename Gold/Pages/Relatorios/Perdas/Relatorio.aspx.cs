@@ -37,6 +37,11 @@ public partial class Pages_Relatorios_Perdas_Relatorio : System.Web.UI.Page
          */
         bd = new PerdasBD();
         ds = bd.SelectAll(DataInicial, DataFinal, Classifica);
+        if (ds.Tables[0].Rows.Count == 0)
+        {
+            lblVazio.Text = "Nenhum registro encontrado com os parâmetros informados.";
+            return;
+        }
         dv = ds.Tables[0].DefaultView;
 
         /*

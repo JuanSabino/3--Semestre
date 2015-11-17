@@ -25,7 +25,8 @@
                     <asp:CheckBoxField DataField="MAQ_ATIVADO" HeaderText="ATIVO"></asp:CheckBoxField>
                 </Columns>
             </asp:GridView>
-
+            <h4>
+                <asp:Label ID="lblVazio" runat="server" Text=""></asp:Label></h4>
 
         </div>
     </form>

@@ -20,16 +20,16 @@
             <h3>
                 <asp:Label ID="lblTitulo" runat="server" Text="Relatório de Horas Trabalhadas:"></asp:Label></h3>
             <div class="jumbotron">
-            <h4>
-                <asp:Label ID="lblParametro" runat="server" Text="Parametros:"></asp:Label></h4>
-            <asp:Label ID="lblInicio" runat="server" Text="Data Inicial:" Width="100px"></asp:Label>
-            <asp:Label ID="lblInicial" runat="server"></asp:Label>
-            <br />
-            <asp:Label ID="lblFim" runat="server" Text="Data Final:" Width="100px"></asp:Label>
-            <asp:Label ID="lblFinal" runat="server"></asp:Label>
-            <br />
-            <asp:Label ID="lblOrd" runat="server" Text="Ordenado por:" Width="100px"></asp:Label>
-            <asp:Label ID="lblOrdem" runat="server"></asp:Label>
+                <h4>
+                    <asp:Label ID="lblParametro" runat="server" Text="Parametros:"></asp:Label></h4>
+                <asp:Label ID="lblInicio" runat="server" Text="Data Inicial:" Width="100px"></asp:Label>
+                <asp:Label ID="lblInicial" runat="server"></asp:Label>
+                <br />
+                <asp:Label ID="lblFim" runat="server" Text="Data Final:" Width="100px"></asp:Label>
+                <asp:Label ID="lblFinal" runat="server"></asp:Label>
+                <br />
+                <asp:Label ID="lblOrd" runat="server" Text="Ordenado por:" Width="100px"></asp:Label>
+                <asp:Label ID="lblOrdem" runat="server"></asp:Label>
             </div>
             <br />
             <hr />
@@ -37,6 +37,8 @@
         </div>
         <asp:Table ID="tblRelatorio" runat="server" CellPadding="5" CellSpacing="5" Width="100%" CssClass="table table-striped table-responsive">
         </asp:Table>
+        <h4>
+            <asp:Label ID="lblVazio" runat="server" Text=""></asp:Label></h4>
     </form>
 </body>
 </html>

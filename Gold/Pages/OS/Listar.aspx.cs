@@ -16,8 +16,15 @@ public partial class Pages_OS_Listar : System.Web.UI.Page
     {
         OSBD osbd = new OSBD();
         DataSet ds = osbd.SelectAll();
-        gvOS.DataSource = ds.Tables[0].DefaultView;
-        gvOS.DataBind();
+        if (ds.Tables[0].Rows.Count != 0)
+        {
+            gvOS.DataSource = ds.Tables[0].DefaultView;
+            gvOS.DataBind();
+        }
+        else
+        {
+            lblVazio.Text = "Nenhum registro encontrado!";
+        }
     }
 
     protected void Page_Load(object sender, EventArgs e)

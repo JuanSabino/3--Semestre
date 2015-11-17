@@ -14,9 +14,16 @@ public partial class Pages_Conta_Listar : System.Web.UI.Page
     private void CarregaGrid()
     {
         ContaBD conBD = new ContaBD();
-        DataSet ds = conBD.SelectAll();
-        gvConta.DataSource = ds.Tables[0].DefaultView;
-        gvConta.DataBind();
+        DataSet ds = conBD.SelectAll();      
+        if (ds.Tables[0].Rows.Count != 0)
+        {
+            gvConta.DataSource = ds.Tables[0].DefaultView;
+            gvConta.DataBind();
+        }
+        else
+        {
+            lblVazio.Text = "Nenhum registro encontrado!";
+        }
     }
 
     protected void Page_Load(object sender, EventArgs e)

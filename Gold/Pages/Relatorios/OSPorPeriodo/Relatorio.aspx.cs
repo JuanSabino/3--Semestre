@@ -25,6 +25,11 @@ public partial class Pages_Relatorios_OSPorPeriodo_Relatorio : System.Web.UI.Pag
 
         OSPorPeriodoBD bd = new OSPorPeriodoBD();
         DataSet ds = bd.SelectAll(DataInicial, DataFinal, Classifica);
+        if (ds.Tables[0].Rows.Count == 0)
+        {
+            lblVazio.Text = "Nenhum registro encontrado com os parâmetros informados.";
+            return;
+        }
         gvRelatorio.DataSource = ds.Tables[0].DefaultView;
         gvRelatorio.DataBind();
 

@@ -21,7 +21,7 @@
             <h3>
                 <asp:Label ID="lblTitulo" runat="server" Text="Atividades"></asp:Label></h3>
             <br />
-            <asp:Button ID="btnIniciar" runat="server" OnClick="btnAbrir_Click" Text="Iniciar Atividade" CssClass="btn btn-default"  />
+            <asp:Button ID="btnIniciar" runat="server" OnClick="btnAbrir_Click" Text="Iniciar Atividade" CssClass="btn btn-default" />
             <br />
             <asp:Label ID="lblMensagem" runat="server" CssClass="has-error alert-warning text-warning bg-warning"></asp:Label>
             <br />
@@ -38,7 +38,7 @@
                     <asp:BoundField DataField="ALC_OBSENTRADA" HeaderText="OBS ENTRADA" />
                     <asp:BoundField DataField="ALC_OBSSAIDA" HeaderText="OBS SAÍDA" />
                     <asp:CheckBoxField DataField="ALC_ATIVADO" HeaderText="ATIVADO" />
-                    <asp:TemplateField HeaderText="ENCERRAR" >
+                    <asp:TemplateField HeaderText="ENCERRAR">
                         <ItemTemplate>
                             <asp:LinkButton ID="lbFechar" runat="server" CommandName="fechar" CommandArgument='<%# Bind("ALC_ID") %>'><i class="fa fa-times"></i></asp:LinkButton>
                         </ItemTemplate>
@@ -46,8 +46,10 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+            <h4>
+                <asp:Label ID="lblVazio" runat="server" Text=""></asp:Label></h4>
             <hr />
-            <asp:GridView ID="gvEncerradas" runat="server" AutoGenerateColumns="False"  CssClass="table table-striped table-bordered table-hover table-responsive">
+            <asp:GridView ID="gvEncerradas" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-hover table-responsive">
 
                 <Columns>
                     <asp:BoundField DataField="OS_ID" HeaderText="OS" />
@@ -61,6 +63,8 @@
                     <asp:CheckBoxField DataField="ALC_ATIVADO" HeaderText="ATIVADO" />
                 </Columns>
             </asp:GridView>
+
+
 
         </div>
     </form>
