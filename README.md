@@ -2,10 +2,10 @@
 Software do Projeto Interdisciplinar do 3º Semestre do curso de Tecnólogo em Gestão de TI pela FATEC Guaratinguetá
 
 
-[@grazianetavares]
+[@grazianetavares]()
 
 
-[@JuanSabino]
+[@JuanSabino]()
 
 
 Marcela Ignacio
@@ -14,7 +14,7 @@ Marcela Ignacio
 Raul Santiago
 
 
-[@Romulo-dePaula] 
+[@Romulo-dePaula] ()
 
 
 
