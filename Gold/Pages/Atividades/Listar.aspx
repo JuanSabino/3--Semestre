@@ -33,14 +33,14 @@
                     <asp:BoundField DataField="FUN_NOME" HeaderText="FUNCIONARIO" />
                     <asp:BoundField DataField="MAQ_NOME" HeaderText="MAQUINA" />
                     <asp:BoundField DataField="CON_NOME" HeaderText="CONTA" />
-                    <asp:BoundField DataField="ALC_INICIO" HeaderText="DATA ABERTURA" />
-                    <asp:BoundField DataField="ALC_TERMINO" HeaderText="DATA ENCERRAMENTO" />
-                    <asp:BoundField DataField="ALC_OBSENTRADA" HeaderText="OBS ENTRADA" />
-                    <asp:BoundField DataField="ALC_OBSSAIDA" HeaderText="OBS SAÍDA" />
-                    <asp:CheckBoxField DataField="ALC_ATIVADO" HeaderText="ATIVADO" />
+                    <asp:BoundField DataField="ACO_INICIO" HeaderText="DATA ABERTURA" />
+                    <asp:BoundField DataField="ACO_TERMINO" HeaderText="DATA ENCERRAMENTO" />
+                    <asp:BoundField DataField="ACO_OBSENTRADA" HeaderText="OBS ENTRADA" />
+                    <asp:BoundField DataField="ACO_OBSSAIDA" HeaderText="OBS SAÍDA" />
+                    <asp:CheckBoxField DataField="ACO_ATIVADO" HeaderText="ATIVADO" />
                     <asp:TemplateField HeaderText="ENCERRAR">
                         <ItemTemplate>
-                            <asp:LinkButton ID="lbFechar" runat="server" CommandName="fechar" CommandArgument='<%# Bind("ALC_ID") %>'><i class="fa fa-times"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lbFechar" runat="server" CommandName="fechar" CommandArgument='<%# Bind("ACO_ID") %>'><i class="fa fa-times"></i></asp:LinkButton>
                         </ItemTemplate>
 
                     </asp:TemplateField>
@@ -56,11 +56,11 @@
                     <asp:BoundField DataField="FUN_NOME" HeaderText="FUNCIONARIO" />
                     <asp:BoundField DataField="MAQ_NOME" HeaderText="MAQUINA" />
                     <asp:BoundField DataField="CON_NOME" HeaderText="CONTA" />
-                    <asp:BoundField DataField="ALC_INICIO" HeaderText="DATA ABERTURA" />
-                    <asp:BoundField DataField="ALC_TERMINO" HeaderText="DATA ENCERRAMENTO" />
-                    <asp:BoundField DataField="ALC_OBSENTRADA" HeaderText="OBS ENTRADA" />
-                    <asp:BoundField DataField="ALC_OBSSAIDA" HeaderText="OBS SAÍDA" />
-                    <asp:CheckBoxField DataField="ALC_ATIVADO" HeaderText="ATIVADO" />
+                    <asp:BoundField DataField="ACO_INICIO" HeaderText="DATA ABERTURA" />
+                    <asp:BoundField DataField="ACO_TERMINO" HeaderText="DATA ENCERRAMENTO" />
+                    <asp:BoundField DataField="ACO_OBSENTRADA" HeaderText="OBS ENTRADA" />
+                    <asp:BoundField DataField="ACO_OBSSAIDA" HeaderText="OBS SAÍDA" />
+                    <asp:CheckBoxField DataField="ACO_ATIVADO" HeaderText="ATIVADO" />
                 </Columns>
             </asp:GridView>
 

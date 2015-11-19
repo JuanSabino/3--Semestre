@@ -38,7 +38,7 @@
             </div>
             <br />
             <hr />
-            <asp:Chart ID="crtRelatorio" runat="server" Width="800px">
+            <asp:Chart ID="crtRelatorio" runat="server" Width="1180px" Height="703px">
                 <Series>
                     <asp:Series Name="Default" ChartType="Pie" Legend="Legend1">
                     </asp:Series>
