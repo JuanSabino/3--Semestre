@@ -40,7 +40,6 @@ public partial class Pages_Relatorios_OSPorPeriodo_Relatorio : System.Web.UI.Pag
         crtRelatorio.Series["Default"]["CollectedThreshold"] = "1"; //valor mínimo para exibir separadamente, abaixo disso agrupa
         crtRelatorio.Series["Default"]["CollectedLabel"] = "Outros Modelos"; //legenda para dados agrupados
         crtRelatorio.Series["Default"]["CollectedLegendText"] = "Outros Modelos";//legenda para dados agrupados
-        //crtRelatorio.Series["Default"].Label = "#PERCENT{P0}";
         crtRelatorio.Legends[0].Enabled = true;//exibe a legenda lateral
         //gráfico
 
