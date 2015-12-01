@@ -5,7 +5,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">CP ALiancas</a>
+      <a class="navbar-brand" href="#">CP Alianças</a>
     </div>
     <div>
       <ul class="nav navbar-nav">

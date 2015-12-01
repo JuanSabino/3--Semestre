@@ -34,7 +34,7 @@ namespace Gold.Persistencia
                                         "and os.OS_ATIVADO = 1 " +
                                         "and cast(os.OS_DATAENTRADA as Date)  between ?DataInicial and ?DataFinal ) as Quantidade " +
                           "from tbl_modelo as modelo " + 
-                          "where MOD_ATIVADO = 1";
+                          "where MOD_ATIVADO = 1 order by Quantidade desc";
 
 
             objConexao = Mapped.Connection();

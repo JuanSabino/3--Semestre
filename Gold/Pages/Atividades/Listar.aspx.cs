@@ -25,7 +25,7 @@ public partial class Pages_Atividades_Listar : System.Web.UI.Page
             }
             else
             {
-                lblVazio.Text = "Nenhum registro encontrado!";
+                lblVazio.Text = "Nenhuma atividade em aberto!";
             }
             ds = aliancabd.SelectAll(true, 2);
             gvEncerradas.DataSource = ds.Tables[0].DefaultView;
